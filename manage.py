@@ -11,7 +11,6 @@ def hello():
     """ Return a friendly HTTP greeting. """
     return 'Hello World!'
 
-
 # Run Configuration
 if __name__ == '__main__':
     app.run(debug=config.DEBUG, host=config.HOST, port=PORT)

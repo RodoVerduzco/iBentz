@@ -2,6 +2,7 @@
 import logging
 from flask.views import MethodView
 from flask import jsonify, request
+import events.handle_events as EVENTS
 
 class EventsAPI(MethodView):
     """ Main API Body """
@@ -30,11 +31,25 @@ class EventsAPI(MethodView):
             json: Response from the server with the news
                   result message
         """
+        response = "Null"
 
         data = request.json
         self.logger.info("########## Events API Called")
         self.logger.info(data)
 
+        if data.get('type') == "INSERT":
+            name = data.get('name')
+            date = data.get('event_date')
+            event_type = data.get('event_type')
+            location = data.get('event_location')
+
+            print(name + " " + date + " " + event_type + " " + location + " \n\n\n\n")
+
+            if name is None or date is None or event_type is None or location is None:
+                response = "Couldnt perfomr action: Missing data"
+            else:
+                response = EVENTS.insert_event(name, date, event_type, location)
+
         return jsonify({
-            'events': "Events"
+            'events': response
         }), 201
