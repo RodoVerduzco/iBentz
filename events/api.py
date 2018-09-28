@@ -14,7 +14,8 @@ class EventsAPI(MethodView):
 
     @staticmethod
     def get():
-        """ Handle the get request
+        """ get
+        Handle the get request
 
         Returns:
             json: Return the news then accessed
@@ -23,6 +24,9 @@ class EventsAPI(MethodView):
 
     @staticmethod
     def get_complete_data(data):
+        """ get_complete_data
+        Retrieve the complete data from the json
+        """
         name = data.get('name')
         date = data.get('event_date')
         event_type = data.get('event_type')
@@ -32,7 +36,6 @@ class EventsAPI(MethodView):
 
     def post(self):
         """ Handle the post request
-
         Call the api when the post request is entered by
         the user
 
@@ -68,8 +71,16 @@ class EventsAPI(MethodView):
         elif data.get('type') == "READ":
             name, date, event_type, location = self.get_complete_data(data)
 
-            if name is None and date is None and event_type is None and location is None:
+            if ((name is None) and (date is None) and (event_type is None) and (location is None)):
                 response = EVENTS.read_all()
+            elif date is not None:
+                response = EVENTS.search_date(date, location, event_type, name)
+            elif location is not None:
+                response = EVENTS.search_location(location, event_type, name)
+            elif event_type is not None:
+                response = EVENTS.search_type(event_type)
+            elif name is not None:
+                response = EVENTS.search_name(name)
 
 
         # elif data.get('type') == "UPDATE":
