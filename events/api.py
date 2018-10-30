@@ -28,11 +28,18 @@ class EventsAPI(MethodView):
         Retrieve the complete data from the json
         """
         name = data.get('name')
+        image = data.get('image')
         date = data.get('event_date')
-        event_type = data.get('event_type')
+        max_part = data.get('max_participants')
         location = data.get('event_location')
+        description = data.get('description')
+        info = data.get('info')
+        event_type = data.get('category')
+        status = data.get('status')
+        num_registered = 0
 
-        return name, date, event_type, location
+        return name, image, date, max_part, location, description, \
+               info, event_type, status, num_registered
 
     def post(self):
         """ Handle the post request
@@ -51,12 +58,16 @@ class EventsAPI(MethodView):
 
         # Insert a new event
         if data.get('type') == "INSERT":
-            name, date, event_type, location = self.get_complete_data(data)
+
+            # Retrieve all the data
+            name, image, date, max_part, location, description, \
+            info, event_type, status, num_registered = self.get_complete_data(data)
 
             if name is None or date is None or event_type is None or location is None:
                 response = "Couldnt perform action: Missing data"
             else:
-                response = EVENTS.insert_event(name, date, event_type, location)
+                response = EVENTS.insert_event(name, image, date, max_part, location, description,
+                                               info, event_type, status, num_registered)
 
         # Delete an event
         elif data.get('type') == "DELETE":
@@ -69,7 +80,10 @@ class EventsAPI(MethodView):
 
         # Get the events
         elif data.get('type') == "READ":
-            name, date, event_type, location = self.get_complete_data(data)
+
+            # Retrieve all the data
+            name, image, date, max_part, location, description, \
+            info, event_type, status, num_registered = self.get_complete_data(data)
 
             if ((name is None) and (date is None) and (event_type is None) and (location is None)):
                 response = EVENTS.read_all()

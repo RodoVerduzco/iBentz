@@ -1,8 +1,8 @@
 """ Handle Events
 This program handles the events interactions
 """
-import config
 from pymongo import MongoClient
+import config
 
 CLIENT = MongoClient(config.DB_URI,
                      connectTimeoutMS=30000,
@@ -11,24 +11,38 @@ CLIENT = MongoClient(config.DB_URI,
 DATABASE = CLIENT.get_default_database()
 collection = DATABASE.events
 
-def insert_event(name, date, event_type, location):
+
+def insert_event(name, image, date, max_part, location, description,
+                 info, event_type, status, num_registered):
     """insert_event
     Calls the DBHelper to insert the event into the database
 
     Args:
-        name(string): Name of the event
-        date(string): Date of the event
-        event_type(string): Type of the event (concert, movie, release, etc)
-        location(string): Where is the event taking place
+        name           (string):  Name of the event
+        image          (string):  Url for the image of the event
+        date           (string):  Date of the event
+        location       (string):  Where is the event taking place
+        description    (string):  Additional information which describes the event
+        info           (string):  External info like a url to find more information
+        event_type     (string):  Type of the event (concert, movie, release, etc)
+        status         (string):  Event stats (active, inactive)
+        num_registered (int):     Number of people attending to the event
 
     Returns:
         string: Confirmation Message
     """
     collection.insert({
         "name": name,
+        "image": image,
         "date": date,
-        "type": event_type,
-        "location": location
+        "max_participants": max_part,
+        "location": location,
+        "description": description,
+        "ext_info": info,
+        "category": event_type,
+        "status": status,
+        "num_registered": num_registered
+
     })
 
     return "Event inserted successfully"
@@ -55,7 +69,7 @@ def read_all():
     Returns:
         list: List of events
     """
-    retrieved_info = list(collection.find())
+    retrieved_info = list(DATABASE.events.find())
     return get_important_info(retrieved_info)
 
 def search_name(name):
