@@ -34,3 +34,5 @@ class DBHelper:
             "type": event_type,
             "location": location
         })
+
+    
