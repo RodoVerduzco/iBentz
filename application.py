@@ -48,8 +48,8 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     if not app.testing:
         logging.basicConfig(level=logging.INFO)
 
-    from events.views import EVENTS_APP
+    from users.views import USERS_APP
 
-    app.register_blueprint(EVENTS_APP, url_prefix='/api/v1')
+    app.register_blueprint(USERS_APP, url_prefix='/api/v1')
 
     return app
