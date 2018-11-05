@@ -19,7 +19,7 @@ class UsersAPI(MethodView):
         Returns:
             json: Return the news then accessed
         """
-        return jsonify({'events': 'Events API'}), 200
+        return jsonify({'users': 'Users API'}), 200
 
     def post(self):
         """ Handle the post request
@@ -60,7 +60,7 @@ class UsersAPI(MethodView):
             usr = data.get('username')
             if usr is None: return jsonify({"user": "MISSING_DATA"})
             return jsonify({"user": USERS.search_username(usr)})
-        
+
         elif testing_param =="CREATE_PREFERENCES":
             usr = data.get('username')
             parameters = data.get('preferences')
@@ -113,7 +113,7 @@ class UsersAPI(MethodView):
             sex = data.get('sex')
             birthday = data.get('birthday')
             location = data.get('location')
-            
+
 
             print("DATA RECEIVED "+username + " "+email+ " " + password + " " + age + " " + first_name + " "+age+ " " +first_name  +"\n")
             print(last_name +" "+ sex+ " " +birthday+ " " + location+" "+user_type)

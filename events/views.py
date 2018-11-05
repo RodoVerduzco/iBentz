@@ -2,7 +2,7 @@
 from flask import Blueprint
 from events.api import EventsAPI
 
-EVENTS_APP = Blueprint('users_app', __name__)
+EVENTS_APP = Blueprint('events_app', __name__)
 EVENTS_VIEW = EventsAPI.as_view('events_api')
 
 EVENTS_APP.add_url_rule('/events/',

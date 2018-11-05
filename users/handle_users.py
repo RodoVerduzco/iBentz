@@ -6,20 +6,20 @@ import dbhelper.dbhelper as DBHELPER
 db = DBHELPER.DBHelper()
 
 def insert_user(username, email, user_type, password, age, first_name, last_name, sex, birthday, location):
-    
+
     db.collection.users.insert({
-            "name": username,
-            "email": email,
-            "password":password,
-            "user_type": user_type,
-            "age": age,
-            "first_name": first_name,
-            "last_name": last_name,
-            "sex": sex,
-            "birthday": birthday,
-            "location": location,
-            "preferences": ""
-        })
+        "name": username,
+        "email": email,
+        "password":password,
+        "user_type": user_type,
+        "age": age,
+        "first_name": first_name,
+        "last_name": last_name,
+        "sex": sex,
+        "birthday": birthday,
+        "location": location,
+        "preferences": ""
+    })
    #db.user_insert(user_name, email, password, age, first_name, last_name, sex, birthday, location)
     return "user inserted successfully"
 
@@ -94,7 +94,7 @@ def search_username(username):
     #retrieved_info = db.collection.users.find_one({"name": username}, {'_id':False})
     if retrieved_info is None:
         return "USER_NOT_FOUND"
-    
+
     return retrieved_info
 
 def search_one_value_param(value, param):
@@ -107,7 +107,7 @@ def search_one_value_param(value, param):
     #retrieved_info = db.collection.users.find_one({"name": username}, {'_id':False})
     if retrieved_info is None:
         return "DATA_NOT_FOUND"
-    
+
     return retrieved_info
 
 def search_many_value_param(value, param):
@@ -120,7 +120,7 @@ def search_many_value_param(value, param):
     #retrieved_info = db.collection.users.find_one({"name": username}, {'_id':False})
     if retrieved_info is None:
         return "DATA_NOT_FOUND"
-    
+
     return retrieved_info
 
 def search_by_type(type_usr):
@@ -194,7 +194,7 @@ def get_various_parameters(user, parameters):
         previous_info = db.collection.users.find_one({"name":user['name']}, {"_id":False})
         desired_info = {}
         for element in previous_info:
-            if element in parameters: 
+            if element in parameters:
                 desired_info.update({element:previous_info[element]})
-        
+
         return desired_info
