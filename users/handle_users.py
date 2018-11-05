@@ -103,7 +103,7 @@ def search_one_value_param(value, param):
     Returns:
         list: List of events
     """
-    retrieved_info = db.collection.users.find_one({value:param}}, {'_id':False})
+    retrieved_info = db.collection.users.find_one({value:param}, {'_id':False})
     #retrieved_info = db.collection.users.find_one({"name": username}, {'_id':False})
     if retrieved_info is None:
         return "DATA_NOT_FOUND"
@@ -116,7 +116,7 @@ def search_many_value_param(value, param):
     Returns:
         list: List of events
     """
-    retrieved_info = db.collection.users.find({value:param}}, {'_id':False})
+    retrieved_info = db.collection.users.find({value:param}, {'_id':False})
     #retrieved_info = db.collection.users.find_one({"name": username}, {'_id':False})
     if retrieved_info is None:
         return "DATA_NOT_FOUND"
