@@ -1,5 +1,6 @@
 
-var url = "http://localhost:5000/api/v1/users/search_users?type=VALIDATE_USER";
+// var url = "http://localhost:5000/api/v1/users/search_users?type=VALIDATE_USER";
+var url = "http://172.20.10.2:5000/api/v1/users/search_users";
 
 jQuery(document).ready(function($) {
   "use strict";
@@ -95,11 +96,12 @@ jQuery(document).ready(function($) {
     else var str = $(this).serialize();
 
     // Here starts the Login Query to Python Server.
-    var f_email = $("#email").val();
+    var f_username = $("#email").val();
     var f_password = $("#password").val();
 
     var data_to_send = {
-        "username" : f_email,
+        "type" : "VALIDATE",
+        "username" : f_username,
         "password" : f_password
     }
     var settings = {
@@ -118,25 +120,27 @@ jQuery(document).ready(function($) {
     $.ajax(settings).done(function (response) {
       console.log(response);
       // alert(response);
-     if(response["users"] === "Null"){
+     if(response["users"]["user_type"] === "INVALID"){
          console.log("No estas registrado");
          // Error Message
          $("#sendmessage").removeClass("show");
          $("#errormessage").addClass("show");
          $('#errormessage').html("Usuario no registrado o password incorrecto.");
+          alert(response);
      }else {
          console.log("Good");
          // Success message
          $("#sendmessage").addClass("show");
          $("#errormessage").removeClass("show");
          $('.contactForm').find("input, textarea").val("");
+         alert(response);
 
          // Here you should stablish your ID session.
          // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
 
 
          // Redirect to User Interface...
-
+         window.location.replace("./userinterface.html?userload="+f_username);
      }
     });
 

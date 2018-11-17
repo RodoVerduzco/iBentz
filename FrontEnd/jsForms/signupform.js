@@ -1,5 +1,6 @@
 
-var url = "http://localhost:5000/api/v1/users/search_users?type=INSERT_USER";
+// var url = "http://localhost:5000/api/v1/users/search_users?type=INSERT_USER";
+var url = "http://172.20.10.2:5000/api/v1/users/search_users";
 
 jQuery(document).ready(function($) {
   "use strict";
@@ -8,7 +9,7 @@ jQuery(document).ready(function($) {
   $('form.signupForm').submit(function() {
     var f = $(this).find('.form-group'),
       ferror = false,
-      dateExp = /^(\d{1,2})\-(\d{1,2})\-(\d{4})$/i,
+      dateExp = /^(\d{4})\-(\d{1,2})\-(\d{1,2})$/i,
       emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
       // Reference: https://www.the-art-of-web.com/javascript/validate-date/
       // dateExp = /^(\d{1,2})\-(\d{1,2})\-(\d{4})$/i;
@@ -51,9 +52,9 @@ jQuery(document).ready(function($) {
               if (!dateExp.test(i.val())) {
                 ferror = ierror = true; // true = Yes, there's an error with the input
             }else{
-                  if(1){
-                      ferror = ierror = true;
-                  }
+                  // if(1){
+                  //     ferror = ierror = true;
+                  // }
               }
               break;
 
@@ -123,14 +124,15 @@ jQuery(document).ready(function($) {
     var f_preferences = $("#preferences").val();
 
     var data_to_send = {
-        "name": f_username,
+        "type" : "INSERT_USER",
+        "username": f_username,
         "email": f_email,
         "password":f_password,
         "user_type": "USER",
         "age": f_age,
         "first_name": f_first_name,
         "last_name": f_last_name,
-        "sex": "13",
+        "sex": f_sex,
         "birthday": f_birthday,
         "location": f_location,
         "preferences": ""
@@ -152,16 +154,10 @@ jQuery(document).ready(function($) {
       console.log(data_to_send);
       console.log(response);
       // alert(response);
-     if(response["users"] === "Null"){
-         console.log("No estas registrado");
-         // You shouldn't get here...
-         // Error Message
-         // $("#sendmessage").removeClass("show");
-         // $("#errormessage").addClass("show");
-         // $('#errormessage').html("Usuario no registrado o password incorrecto.");
-     }else {
+     if(response["users"] === "user inserted successfully"){
          console.log("Good");
          // Success message
+         alert("Plox");
          $("#sendmessage").addClass("show");
          $("#errormessage").removeClass("show");
          $('.contactForm').find("input, textarea").val("");
@@ -171,7 +167,15 @@ jQuery(document).ready(function($) {
 
 
         // Redirect to User Interface...
-
+        window.location.replace("userinterface.html?userload="+f_username);
+     }else {
+         // You shouldn't get here...
+        console.log("No estas registrado");
+        alert("ploxsignup");
+        // Error Message
+        // $("#sendmessage").removeClass("show");
+        // $("#errormessage").addClass("show");
+        // $('#errormessage').html("Usuario no registrado o password incorrecto.");
      }
     });
 

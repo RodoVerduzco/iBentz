@@ -38,35 +38,31 @@
 <body>
 
 	<!--==========================
-    Header
-  ============================-->
+      Header
+    ============================-->
 	<header id="header" class="header-scrolled">
-		<div class="container">
+      <div class="container">
 
-			<div id="logo" class="pull-left">
-				<!-- Uncomment below if you prefer to use a text logo -->
-				<!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
-				<a href="#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
-			</div>
+        <div id="logo" class="pull-left">
+          <!-- Uncomment below if you prefer to use a text logo -->
+          <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
+          <!-- <a href="#intro" class="scrollto"><img src="img/logo.png" width="20%" height="auto" alt="100%" title=""></a> -->
+          <a href="index.html" class="scrollto"><img src="img/logo.png" width="auto" height="auto" alt="100%" title=""></a>
+        </div>
 
-			<nav id="nav-menu-container">
-				<ul class="nav-menu">
-					<li class="menu-active"><a href="#intro">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#speakers">Speakers</a></li>
-					<li><a href="#schedule">Schedule</a></li>
-					<li><a href="#venue">Venue</a></li>
-					<li><a href="#hotels">Hotels</a></li>
-					<li><a href="#gallery">Gallery</a></li>
-					<li><a href="#sponsors">Sponsors</a></li>
-					<li><a href="#contact">Contact</a></li>
-					<li class="buy-tickets"><a href="#buy-tickets">Buy Tickets</a></li>
-				</ul>
-			</nav>
-			<!-- #nav-menu-container -->
-		</div>
-	</header>
-	<!-- #header -->
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+            <li class="menu-active"><a href="index.html#intro">Inicio</a></li>
+            <li><a href="index.html#speakers">Eventos</a></li>
+
+            <li><a href="index.html#gallery">Popular</a></li>
+            <li><a href="index.html#contact">Contacto</a></li>
+            <li class="buy-tickets"><a href="signup.html">Sign Up</a></li>
+            <li class="buy-tickets"><a href="login.html">Log In</a></li>
+          </ul>
+        </nav><!-- #nav-menu-container -->
+      </div>
+    </header><!-- #header -->
 
 	<!--==========================
     Login Form
@@ -111,7 +107,7 @@
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-4">
-							<label for="sex" class="col-sm-2 col-form-label">Genre</label>
+							<!-- <label for="sex" class="col-sm-2 col-form-label">Genre</label> -->
 							<div class="custom-control custom-radio custom-control-inline">
 								<input type="radio" id="sex1" name="radiosex" value="M" class="custom-control-input">
 								<label class="custom-control-label" for="sex1">Masculine</label>
@@ -123,13 +119,51 @@
 							<div class="validation"></div>
 						</div>
 						<div class="form-group col-md-4">
-							<input type="text" name="birthday" class="form-control" id="birthday" placeholder="Your Birthday in format 11-05-1996" data-rule="date" data-msg="Please enter a valid with format 11-05-1996" />
+							<input type="text" name="birthday" class="form-control" id="birthday" placeholder="Your Birthday in format 1996-11-05" data-rule="date" data-msg="Please enter a valid with format 11-05-1996" />
+							<div class="validation"></div>
+						</div>
+						<div class="form-group col-md-4">
+							<input type="number" name="age" class="form-control" id="age" placeholder="Your Age" data-rule="minlen:2" data-msg="Please enter a valid number" />
 							<div class="validation"></div>
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							<input type="text" name="location" class="form-control" id="location" placeholder="Your locations" data-rule="minlen:5" data-msg="Please enter at least 2 chars" />
+							<select name="location" class="form-control" id="location">
+										<option selected value="base">Estado</option>
+									    <option value="AGS">Aguascalientes</option>
+									  	<option value="BCN">Baja Calfornia</option>
+									  	<option value="BCS">Baja California Sur</option>
+									  	<option value="CAM">Campeche</option>
+									  	<option value="CHP">Chiapas</option>
+									  	<option value="CHI">Chihuahua</option>
+									  	<option value="DIF">Ciudad de México</option>
+									  	<option value="COA">Coahuila</option>
+									  	<option value="COL">Colima</option>
+									  	<option value="DUR">Durango</option>
+									  	<option value="GTO">Guanajuato</option>
+									  	<option value="GRO">Guerrero</option>
+									  	<option value="H￼GO">Hidalgo</option>
+									  	<option value="JAL">Jalisco</option>
+									  	<option value="MEX">México</option>
+									  	<option value="MIC">Michoacán</option>
+									  	<option value="MOR">Morelos</option>
+									  	<option value="NAY">Nayarit</option>
+									  	<option value="NLE">Nuevo León</option>
+									  	<option value="OAX">Oaxaca</option>
+									  	<option value="PUE">Puebla</option>
+									  	<option value="QRO">Querétaro</option>
+									  	<option value="ROO">Quintana Roo</option>
+									  	<option value="SLP">San Luis Potosí</option>
+									  	<option value="SIN">Sinaloa</option>
+									  	<option value="SON">Sonora</option>
+									  	<option value="TAB">Tabasco</option>
+									  	<option value="TAM">Tamaulipas</option>
+									  	<option value="TLX">Tlaxcala</option>
+									  	<option value="VER">Veracruz</option>
+									  	<option value="YUC">Yucatán</option>
+									  	<option value="ZAC">Zacatecas</option>
+									</select>
 							<div class="validation"></div>
 						</div>
 						<div class="form-group col-md-6">
