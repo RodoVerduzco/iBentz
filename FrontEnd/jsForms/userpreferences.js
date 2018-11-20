@@ -202,25 +202,28 @@ jQuery(document).ready(function($) {
       console.log(data_to_send);
       console.log(response);
       // alert(response);
-     if(response["users"] === "UPDATED"){
+     if(response["users"] === "user inserted successfully"){
          console.log("Good");
          // Success message
-         // alert("Plox");
+         alert("Plox");
          $("#sendmessage").addClass("show");
          $("#errormessage").removeClass("show");
          $('.contactForm').find("input, textarea").val("");
+
         // Here you should stablish your ID session.
         // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
+
+
         // Redirect to User Interface...
         window.location.replace("userinterface.html?userload="+f_username);
      }else {
          // You shouldn't get here...
         console.log("No estas registrado");
-        // alert("ploxsignup");
+        alert("ploxsignup");
         // Error Message
-        $("#sendmessage").removeClass("show");
-        $("#errormessage").addClass("show");
-        $('#errormessage').html("D: Algo salio mal Intenta de nuevo...");
+        // $("#sendmessage").removeClass("show");
+        // $("#errormessage").addClass("show");
+        // $('#errormessage').html("Usuario no registrado o password incorrecto.");
      }
     });
 
