@@ -3,7 +3,7 @@ This file contains all of the configuration values for the application.
 """
 
 DEBUG = True
-PORT = 5000
+PORT = 8080
 HOST = '0.0.0.0'
 DB_URI = "mongodb://ibents-admin:vicesputo19@ds257752.mlab.com:57752/ibentz"
 #DB_URI = "mongodb://ibents-admin2:password1@ds257752.mlab.com:57752/ibentz"

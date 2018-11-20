@@ -1660,3 +1660,10 @@ body.mobile-nav-active #mobile-nav-toggle {
     margin-top: 10px;
   }
 }
+
+.hoverfx {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+}
