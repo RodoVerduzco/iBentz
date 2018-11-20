@@ -161,13 +161,9 @@ function generate_carousel(){
       var img = $('<img />').attr({
             'id': 'myImage'+element.name,
             'src': '../FrontEnd/img/gallery/' + element.image,
-            'width': "200px"
+            'width': "200px",
+            'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
         }).appendTo('#events-carousel');
-
-      var div =   $('<a />').attr({
-            'href': '#',
-            'class': 'hoverfx'
-        }).appendTo(img);
     });
 
     // Gallery carousel (uses the Owl Carousel library)
