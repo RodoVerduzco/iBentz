@@ -16,7 +16,7 @@ def insert_event(name, image, date, max_part, location, description,
                  info, event_type, status, num_registered):
     """insert_event
     Calls the DBHelper to insert the event into the database
-
+    categories: MUSICA, DEPORTE, ARTE, CINE, LITERATURA, TEATRO
     Args:
         name           (string):  Name of the event
         image          (string):  Url for the image of the event
@@ -70,6 +70,7 @@ def read_all():
         list: List of events
     """
     retrieved_info = list(DATABASE.events.find())
+    print(retrieved_info)
     return get_important_info(retrieved_info)
 
 def search_name(name):
@@ -99,7 +100,7 @@ def search_date(date, location, event_type, name):
         if location is not None:
             event_filter.append({"location": location})
         if event_type is not None:
-            event_filter.append({"type": event_type})
+            event_filter.append({"categorie": event_type})
         if name is not None:
             event_filter.append({"name": name})
 
@@ -139,7 +140,7 @@ def search_type(event_type):
     Returns:
         list: List of events
     """
-    result = collection.find({"type": event_type})
+    result = collection.find({"category": event_type})
     return get_important_info(result)
 
 def get_important_info(retrieved_info):
@@ -154,7 +155,7 @@ def get_important_info(retrieved_info):
         result.append({
             "name": element["name"],
             "event_date": element["date"],
-            "event_type": element["type"],
+            "event_type": element["category"],
             "event_location": element["location"]
         })
 

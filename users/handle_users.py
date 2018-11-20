@@ -7,21 +7,26 @@ db = DBHELPER.DBHelper()
 
 def insert_user(username, email, user_type, password, age, first_name, last_name, sex, birthday, location):
 
-    db.collection.users.insert({
-        "name": username,
-        "email": email,
-        "password":password,
-        "user_type": user_type,
-        "age": age,
-        "first_name": first_name,
-        "last_name": last_name,
-        "sex": sex,
-        "birthday": birthday,
-        "location": location,
-        "preferences": ""
-    })
-   #db.user_insert(user_name, email, password, age, first_name, last_name, sex, birthday, location)
-    return "user inserted successfully"
+    retrieved_info = db.collection.users.find_one({"$or":[{"name": username},{"email":username}]}, {'_id':False})
+    if(retrieved_info is None):
+    # sex: M, F
+    # birthday: %Y-%m-%d
+        db.collection.users.insert({
+            "name": username,
+            "email": email,
+            "password":password,
+            "user_type": user_type,
+            "age": age,
+            "first_name": first_name,
+            "last_name": last_name,
+            "sex": sex,
+            "birthday": birthday,
+            "location": location,
+            "preferences": ""
+        })
+    #db.user_insert(user_name, email, password, age, first_name, last_name, sex, birthday, location)
+        return "user inserted successfully"
+    return "User/email already exists"
 
 def delete_email(email):
     """delete_user
@@ -35,6 +40,14 @@ def delete_email(email):
     db.collection.users.delete_one(delete_query)
 
     return "User " + email + " was deleted"
+
+def modify_user(username, email, password, age, first_name, last_name, sex, birthday, location):
+
+    result = db.collection.users.update_one({"$or": [{"name": username}, {"email":username}]},{"$set": [{"email":email}, {"password":password}, {"age", age}, {"first_name":first_name},\
+    {"last_name":last_name}, {"sex":sex}, {"birthday":birthday},{"location":location}]}, upsert=False)
+
+    return "Update done successfully for "+username
+
 
 def validate_user(username, password):
 

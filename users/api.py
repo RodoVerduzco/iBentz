@@ -87,7 +87,7 @@ class UsersAPI(MethodView):
             param = data.get('param')
             if usr is None or param is None:
                 return "MISSING_DATA"
-            return jsonify({"user": USERS.get_parameter(usr,param)})
+            response = {"user": USERS.get_parameter(usr,param)}
 
         elif data.get('type') == "GET_VARIOUS_PARAMS":
             usr = data.get('username')
@@ -95,6 +95,21 @@ class UsersAPI(MethodView):
             if usr is None or parameters is None:
                 return "MISSING_DATA"
             return jsonify({"user": USERS.get_various_parameters(usr,parameters)})
+        
+        elif data.get('type') == "MODIFY_USER":
+            usr = data.get('username')
+            email = data.get('email')
+            password = data.get('password')
+            age = data.get('age')
+            first_name = data.get('first_name')
+            last_name = data.get('last_name')
+            sex = data.get('sex')
+            birthday = data.get('birthday')
+            location = data.get('location')
+            if usr and email and password and age and first_name and last_name and sex and birthday and location:
+                response = "Missing_DATA"
+            
+            response = USERS.modify_user(usr, email, user_type, password, age, first_name, last_name, sex, birthday, location)
 
         elif testing_param == ('SEARCH_TYPE'):
             user_type = data.get('user_type')
@@ -102,7 +117,7 @@ class UsersAPI(MethodView):
                 return jsonify({"user":"MISSING_DATA"})
             return jsonify({"user": USERS.search_by_type(user_type)})
 
-        elif testing_param == "INSERT":
+        elif testing_param == "INSERT_USER":
             username = data.get('username')
             email = data.get('email')
             password = data.get('password')
@@ -113,10 +128,6 @@ class UsersAPI(MethodView):
             sex = data.get('sex')
             birthday = data.get('birthday')
             location = data.get('location')
-
-
-            print("DATA RECEIVED "+username + " "+email+ " " + password + " " + age + " " + first_name + " "+age+ " " +first_name  +"\n")
-            print(last_name +" "+ sex+ " " +birthday+ " " + location+" "+user_type)
 
             if username is None or email is None or password is None or age is None or first_name is None or last_name is None or sex is None or birthday is None or location is None or user_type is None:
                 response = "MISSING_DATA"

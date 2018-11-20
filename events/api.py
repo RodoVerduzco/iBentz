@@ -26,6 +26,7 @@ class EventsAPI(MethodView):
     def get_complete_data(data):
         """ get_complete_data
         Retrieve the complete data from the json
+        categories: MUSICA, DEPORTE, ARTE, CINE, LITERATURA, TEATRO
         """
         name = data.get('name')
         image = data.get('image')
