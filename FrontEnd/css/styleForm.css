@@ -469,7 +469,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #intro {
   width: 100%;
   height: 100vh;
-  background-image: url(../img/H1.jpg);
+  background: url(../img/intro-bg.jpg) top center;
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -1386,6 +1386,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 #contact .form button[type="submit"]:hover {
   background: #e0072f;
 }
+
+#contact .form button[type="button"] {
+  background: #f82249;
+  border: 0;
+  padding: 10px 40px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+#contact .form button[type="button"]:hover {
+  background: #e0072f;
+}
+
 
 /*--------------------------------------------------------------
 # Footer
