@@ -41,28 +41,30 @@
       Header
     ============================-->
 	<header id="header" class="header-scrolled">
-      <div class="container">
+		<div class="container">
 
-        <div id="logo" class="pull-left">
-          <!-- Uncomment below if you prefer to use a text logo -->
-          <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
-          <!-- <a href="#intro" class="scrollto"><img src="img/logo.png" width="20%" height="auto" alt="100%" title=""></a> -->
-          <a href="index.html" class="scrollto"><img src="img/logo.png" width="auto" height="auto" alt="100%" title=""></a>
-        </div>
+			<div id="logo" class="pull-left">
+				<!-- Uncomment below if you prefer to use a text logo -->
+				<!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
+				<!-- <a href="#intro" class="scrollto"><img src="img/logo.png" width="20%" height="auto" alt="100%" title=""></a> -->
+				<a href="index.html" class="scrollto"><img src="img/logo.png" width="auto" height="auto" alt="100%" title=""></a>
+			</div>
 
-        <nav id="nav-menu-container">
-          <ul class="nav-menu">
-            <li class="menu-active"><a href="index.html#intro">Inicio</a></li>
-            <li><a href="index.html#speakers">Eventos</a></li>
+			<nav id="nav-menu-container">
+				<ul class="nav-menu">
+					<li class="menu-active"><a href="index.html#intro">Inicio</a></li>
+					<li><a href="index.html#speakers">Eventos</a></li>
 
-            <li><a href="index.html#gallery">Popular</a></li>
-            <li><a href="index.html#contact">Contacto</a></li>
-            <li class="buy-tickets"><a href="signup.html">Sign Up</a></li>
-            <li class="buy-tickets"><a href="login.html">Login</a></li>
-          </ul>
-        </nav><!-- #nav-menu-container -->
-      </div>
-    </header><!-- #header -->
+					<li><a href="index.html#gallery">Popular</a></li>
+					<li><a href="index.html#contact">Contacto</a></li>
+					<li class="buy-tickets"><a href="signup.html">Sign Up</a></li>
+					<li class="buy-tickets"><a href="login.html">Login</a></li>
+				</ul>
+			</nav>
+			<!-- #nav-menu-container -->
+		</div>
+	</header>
+	<!-- #header -->
 
 	<!--==========================
     Login Form
@@ -75,7 +77,7 @@
 
 		<div class="container">
 			<div class="section-header">
-				<h2>User Profile</h2>
+				<h2>User Preferences</h2>
 				<!-- <p>Please insteed.</p> -->
 			</div>
 
@@ -83,98 +85,38 @@
 				<div id="sendmessage">Your message has been sent. Thank you!</div>
 				<div id="errormessage"></div>
 				<form action="" method="post" role="form" class="profileForm">
-					<div class="form-group">
-						<input type="text" class="form-control" name="username" id="username" placeholder="Your Username" data-rule="minlen:4" data-msg="Please enter at least 4 chars" disabled/>
-						<div class="validation"></div>
-					</div>
-					<div class="form-group">
-						<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-						<div class="validation"></div>
-					</div>
-					<div class="form-group">
-						<input type="password" name="password" class="form-control" id="password" placeholder="Your password" data-rule="minlen:6" data-msg="Please enter at least 6 chars" />
-						<div class="validation"></div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<input type="text" name="first_name" class="form-control" id="first_name" placeholder="Your First Name" data-rule="minlen:2" data-msg="Please enter at least 2 chars" />
-							<div class="validation"></div>
+					<div class="form-group text-center">
+						<div class="custom-control custom-checkbox custom-control-inline">
+							<input type="checkbox" class="custom-control-input" id="customCheck1" name="mypreferences" value="MUSICA">
+							<label class="custom-control-label" for="customCheck1">MUSICA</label>
 						</div>
-						<div class="form-group col-md-6">
-							<input type="text" name="last_name" class="form-control" id="last_name" placeholder="Your Last Name" data-rule="minlen:2" data-msg="Please enter at least 2 chars" />
-							<div class="validation"></div>
+						<div class="custom-control custom-checkbox custom-control-inline">
+							<input type="checkbox" class="custom-control-input" id="customCheck2" name="mypreferences" value="ARTE">
+							<label class="custom-control-label" for="customCheck2">ARTE</label>
+						</div>
+						<div class="custom-control custom-checkbox custom-control-inline">
+							<input type="checkbox" class="custom-control-input" id="customCheck3" name="mypreferences" value="CINE">
+							<label class="custom-control-label" for="customCheck3">CINE</label>
 						</div>
 					</div>
-					<div class="form-row">
-						<div class="form-group col-md-4">
-							<!-- <label for="sex" class="col-sm-2 col-form-label">Genre</label> -->
-							<div class="custom-control custom-radio custom-control-inline">
-								<input type="radio" id="sex1" name="radiosex" value="M" class="custom-control-input">
-								<label class="custom-control-label" for="sex1">Masculine</label>
-							</div>
-							<div class="custom-control custom-radio custom-control-inline">
-								<input type="radio" id="sex2" name="radiosex" value="F" class="custom-control-input">
-								<label class="custom-control-label" for="sex2">Feminine</label>
-							</div>
-							<div class="validation"></div>
+					<div class="form-group text-center">
+						<div class="custom-control custom-checkbox custom-control-inline">
+							<input type="checkbox" class="custom-control-input" id="customCheck4" name="mypreferences" value="LITERATURA">
+							<label class="custom-control-label" for="customCheck4">LITERATURA</label>
 						</div>
-						<div class="form-group col-md-4">
-							<input type="text" name="birthday" class="form-control" id="birthday" placeholder="Your Birthday in format 1996-11-05" data-rule="date" data-msg="Please enter a valid with format 11-05-1996" />
-							<div class="validation"></div>
+						<div class="custom-control custom-checkbox custom-control-inline">
+							<input type="checkbox" class="custom-control-input" id="customCheck5" name="mypreferences" value="TEATRO">
+							<label class="custom-control-label" for="customCheck5">TEATRO</label>
 						</div>
-						<div class="form-group col-md-4">
-							<input type="number" name="age" class="form-control" id="age" placeholder="Your Age" data-rule="minlen:2" data-msg="Please enter a valid number" />
-							<div class="validation"></div>
+						<div class="custom-control custom-checkbox custom-control-inline">
+							<input type="checkbox" class="custom-control-input" id="customCheck6" name="mypreferences" value="DEPORTE">
+							<label class="custom-control-label" for="customCheck6">DEPORTE</label>
 						</div>
 					</div>
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<select name="location" class="form-control" id="location">
-										<option selected value="base">Estado</option>
-									    <option value="AGS">Aguascalientes</option>
-									  	<option value="BCN">Baja Calfornia</option>
-									  	<option value="BCS">Baja California Sur</option>
-									  	<option value="CAM">Campeche</option>
-									  	<option value="CHP">Chiapas</option>
-									  	<option value="CHI">Chihuahua</option>
-									  	<option value="DIF">Ciudad de México</option>
-									  	<option value="COA">Coahuila</option>
-									  	<option value="COL">Colima</option>
-									  	<option value="DUR">Durango</option>
-									  	<option value="GTO">Guanajuato</option>
-									  	<option value="GRO">Guerrero</option>
-									  	<option value="H￼GO">Hidalgo</option>
-									  	<option value="JAL">Jalisco</option>
-									  	<option value="MEX">México</option>
-									  	<option value="MIC">Michoacán</option>
-									  	<option value="MOR">Morelos</option>
-									  	<option value="NAY">Nayarit</option>
-									  	<option value="NLE">Nuevo León</option>
-									  	<option value="OAX">Oaxaca</option>
-									  	<option value="PUE">Puebla</option>
-									  	<option value="QRO">Querétaro</option>
-									  	<option value="ROO">Quintana Roo</option>
-									  	<option value="SLP">San Luis Potosí</option>
-									  	<option value="SIN">Sinaloa</option>
-									  	<option value="SON">Sonora</option>
-									  	<option value="TAB">Tabasco</option>
-									  	<option value="TAM">Tamaulipas</option>
-									  	<option value="TLX">Tlaxcala</option>
-									  	<option value="VER">Veracruz</option>
-									  	<option value="YUC">Yucatán</option>
-									  	<option value="ZAC">Zacatecas</option>
-									</select>
-							<div class="validation"></div>
-						</div>
-						<div class="form-group col-md-6">
-							<input type="text" name="preferences" class="form-control" id="preferences" placeholder="Your preferences" data-rule="minlen:2" data-msg="Please enter at least 2 chars" />
-							<div class="validation"></div>
-						</div>
-					</div>
+					<br>
 					<div class="text-center"><button type="button">DELETE BACK</button><button type="submit">MODIFY</button></div>
 				</form>
 			</div>
-
 		</div>
 	</section>
 	<!-- #contact -->
@@ -270,7 +212,7 @@
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
 	<!-- Contact Form JavaScript File -->
-	<script src="jsForms/userinterface.js"></script>
+	<script src="jsForms/userpreferences.js"></script>
 
 	<!-- Template Main Javascript File -->
 	<script src="js/login.js"></script>

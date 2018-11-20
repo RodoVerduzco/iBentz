@@ -182,7 +182,7 @@ jQuery(document).ready(function($) {
         "last_name": f_last_name,
         "sex": f_sex,
         "birthday": f_birthday,
-        "location": f_location,
+        "location": f_location
         // "preferences": ""
     }
     var settings = {
