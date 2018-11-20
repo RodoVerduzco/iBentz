@@ -140,20 +140,7 @@ jQuery(document).ready(function( $ ) {
 // custom code
 
 });
-function event_data(name){
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": IP + EVENTS_ENDPOINT,
-    "method": "GET",
-    "headers": {
-      "Content-Type": "application/json",
-      "cache-control": "no-cache",
-      "Postman-Token": "f870dae0-f862-4529-aef7-f6b381780364"
-    },
-    "processData": false,
-    "data": " {\"action\": \"GET\",\"name\": \""+name+"\"}"
-  };
+
 
 
 function generate_carousel(){
@@ -190,5 +177,25 @@ function generate_carousel(){
       responsive: { 0: { items: 1 }, 768: { items: 3 }, 992: { items: 4 }, 1200: {items: 5}
       }
     });
+  });
+}
+
+function event_data(name){
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": IP + EVENTS_ENDPOINT,
+    "method": "GET",
+    "headers": {
+      "Content-Type": "application/json",
+      "cache-control": "no-cache",
+      "Postman-Token": "f870dae0-f862-4529-aef7-f6b381780364"
+    },
+    "processData": false,
+    "data": " {\"action\": \"GET\",\"name\": \""+name+"\"}"
+  }
+
+  $.ajax(settings).done(function (response) {
+      console.log(response);
   });
 }
