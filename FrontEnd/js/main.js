@@ -140,6 +140,21 @@ jQuery(document).ready(function( $ ) {
 // custom code
 
 });
+function event_data(name){
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": IP + EVENTS_ENDPOINT,
+    "method": "GET",
+    "headers": {
+      "Content-Type": "application/json",
+      "cache-control": "no-cache",
+      "Postman-Token": "f870dae0-f862-4529-aef7-f6b381780364"
+    },
+    "processData": false,
+    "data": " {\"action\": \"GET\",\"name\": \""+name+"\"}"
+  };
+
 
 function generate_carousel(){
   var settings = {
