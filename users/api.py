@@ -138,10 +138,11 @@ class UsersAPI(MethodView):
         
         elif testing_param == 'GET_ORG_EVENTS':
             usr = data.get('username')
-            if usr is None:
+            stat = data.get('status')
+            if usr is None or stat is None:
                 response = "MISSING_DATA"
             
-            response = USERS.get_org_event(usr)
+            response = USERS.get_org_event(usr,stat)
         
         elif testing_param == "GET_USER_RECOMMENDATIONS":
             usr = data.get('username')

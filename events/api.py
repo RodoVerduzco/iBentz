@@ -112,6 +112,20 @@ class EventsAPI(MethodView):
             elif name is not None:
                 response = EVENTS.search_name(name)
 
+        elif data.get('type') == "UPDATE_EVENT":
+            event_id = data.get('event_id')
+            name = data.get('name')
+            date = data.get('event_date')
+            location = data.get('event_location')
+            image = data.get('image')
+            max_part = data.get('max_participants')
+            description = data.get('description')
+            info = data.get('info')
+            category = data.get('category')
+            if event_id and name and date and location and image and max_part and description and info and category:
+                response =EVENTS.modify_event(event_id,name, date, location, image, max_part, description, info, category)
+            else:
+                response = "MISSING_DATA"
 
         # elif data.get('type') == "UPDATE":
         #     name, date, event_type, location = self.get_complete_data(data)

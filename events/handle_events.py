@@ -42,8 +42,8 @@ def insert_event(name, image, date, max_part, location, description,
         "description": description,
         "ext_info": info,
         "category": event_type,
-        "status": status,
-        "num_registered": num_registered,
+        "status": "ACTIVE",
+        "num_registered": 0,
         "organizer": organizer
 
     })
@@ -61,7 +61,7 @@ def delete_event(event_name):
         string: Confirmation Message
     """
     delete_query = {"name": event_name}
-    collection.delete_one(delete_query)
+    collection.update_one(delete_query, {"$set":{"status":"ACTIVE"}})
 
     return "Event " + event_name + " was deleted"
 
@@ -106,9 +106,16 @@ def search_id( event_id):
             "category": element['category'],
             "status": element['status'],
             "num_registered": element['num_registered'],
-            "organizer": ""#element['organizer']
+            "organizer": element['organizer']
         }
         return result
+
+def modify_event(event_id,name, date, location, image, max_part, description, info, category):
+    #db.collection.users.update({"name":user_info['name']},{"$set":{"events":my_events}})
+    collection.update_one({"_id": ObjectId(event_id)}, {"$set":{"name":name,"date":date,"location":location,\
+    "category":category,"info":info,"image":image, "max_participants":max_part,"description":description}})
+
+    return "UPDATED_EVENT"
 
 def search_date(date, location, event_type, name):
     """search_date
@@ -222,7 +229,7 @@ def get_important_info(retrieved_info):
             "category": element['category'],
             "status": element['status'],
             "num_registered": element['num_registered'],
-            "organizer":""#element['organizer']
+            "organizer":element['organizer']
         })
 
     return result
