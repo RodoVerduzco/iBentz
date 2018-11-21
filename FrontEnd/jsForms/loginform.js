@@ -151,7 +151,7 @@ jQuery(document).ready(function($) {
          //     default:
          //
          // }
-         window.location.replace("./userprofile.html?userload="+f_username);
+         window.location.replace("./userinterface.html?userload="+f_username);
      }
     });
 

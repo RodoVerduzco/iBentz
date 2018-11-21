@@ -32,14 +32,10 @@ function setValuesOnLoad( jQuery ) {
     $.ajax(settings).done(function (response) {
       console.log(data_to_send);
       console.log(response);
-
-      // var favorite = [];
-      //       $.each($("input[name='sport']:checked"), function(){
-      //           favorite.push($(this).val());
-      //       });
-      //       alert("My favourite sports are: " + favorite.join(", "));
-      //   });
-      // $("#preferences").val(response["user"].email);
+      for (var i = 0; i < response["users"]["user"].length; i++) {
+          console.log(response["users"]["user"][i]);
+          $("input[name='mypreferences'][value='"+response["users"]["user"][i]+"']").prop('checked',true);
+      }
   });
 }
 
@@ -62,10 +58,9 @@ jQuery(document).ready(function($) {
     console.log(mypreferences.join(", "));
 
     var data_to_send = {
-        "type" : "ADD_PREFERENCES",
+        "type" : "UPDATE_PREFERENCES",
         "username": f_username,
         "preferences": mypreferences
-        // "preferences": ""
     }
     var settings = {
         "async": true,
@@ -84,23 +79,23 @@ jQuery(document).ready(function($) {
       console.log(data_to_send);
       console.log(response);
       // alert(response);
-     if(response["users"] === "user inserted successfully"){
-         console.log("Good");
-        // Here you should stablish your ID session.
-        // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
-
-
-        // Redirect to User Interface...
-        window.location.replace("userpreferences.html?userload="+f_username);
-     }else {
-         // You shouldn't get here...
-        console.log("You shouldn't get here...");
-        // alert("ploxsignup");
-        // Error Message
-        // $("#sendmessage").removeClass("show");
-        // $("#errormessage").addClass("show");
-        // $('#errormessage').html("Usuario no registrado o password incorrecto.");
-     }
+     // if(response["users"] === "user inserted successfully"){
+     //     console.log("Good");
+     //    // Here you should stablish your ID session.
+     //    // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
+     //
+     //
+     //    // Redirect to User Interface...
+     //    window.location.replace("userpreferences.html?userload="+f_username);
+     // }else {
+     //     // You shouldn't get here...
+     //    console.log("You shouldn't get here...");
+     //    // alert("ploxsignup");
+     //    // Error Message
+     //    // $("#sendmessage").removeClass("show");
+     //    // $("#errormessage").addClass("show");
+     //    // $('#errormessage').html("Usuario no registrado o password incorrecto.");
+     // }
     });
 
     // Refer to contactform.js to know the basic structure provided by the template.
