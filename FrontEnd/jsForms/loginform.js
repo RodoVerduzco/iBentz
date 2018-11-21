@@ -134,17 +134,18 @@ jQuery(document).ready(function($) {
          // $("#sendmessage").addClass("show");
          // $("#errormessage").removeClass("show");
          // $('.contactForm').find("input, textarea").val("");
-         alert(response);
-         alert(response["users"]["user_type"]);
+         // alert(response);
+         // alert(response["users"]["user_type"]);
+
          // Here you should stablish your ID session.
          // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
-
+         
          // Redirect to User Interface...
          if(response["users"]["user_type"]==="USER"){
              window.location.replace("./userinterface.html?userload="+f_username);
          }else if(response["users"]["user_type"]==="ORG"){
              console.log("You are a ORG");
-             alert(response["users"]["user_type"]);
+             // alert(response["users"]["user_type"]);
              window.location.replace("./orginsevent.html?userload="+f_username);
          }else{
               console.log("What are you?");
