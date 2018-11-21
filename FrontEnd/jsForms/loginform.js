@@ -129,17 +129,28 @@ jQuery(document).ready(function($) {
           alert(response);
      }else {
          console.log("Good");
+         console.log(response["users"]["user_type"]);
          // Success message
          $("#sendmessage").addClass("show");
          $("#errormessage").removeClass("show");
          $('.contactForm').find("input, textarea").val("");
          alert(response);
+         alert(response["users"]["user_type"]);
+
+
 
          // Here you should stablish your ID session.
          // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
 
 
          // Redirect to User Interface...
+         // switch (response["users"]["user_type"]) {
+         //     case expression:
+         //
+         //         break;
+         //     default:
+         //
+         // }
          window.location.replace("./userinterface.html?userload="+f_username);
      }
     });

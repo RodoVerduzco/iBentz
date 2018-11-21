@@ -2,11 +2,59 @@
 // var url = "http://localhost:5000/api/v1/users/search_users?type=INSERT_USER";
 var url = "http://172.20.10.2:5000/api/v1/users/search_users";
 
+const urlParams = new URLSearchParams(window.location.search);
+const f_username = urlParams.get('userload');
+
+// Passing a named function instead of an anonymous function.
+
+function setValuesOnLoad( jQuery ) {
+    // Code to run when the document is ready.
+
+    // Get ID of user:
+    var data_to_send = {
+        "type" : "GET_USER_DATA",
+        "username": f_username
+    }
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": url,
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache",
+        },
+        "processData": false,
+        "data": JSON.stringify(data_to_send)
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(data_to_send);
+      console.log(response);
+
+      $("#username").val(response["user"].name);
+      $("#email").val(response["user"].email);
+      $("#password").val(response["user"].password);
+      // user_type = $("#user_type").val();
+      $("#age").val(response["user"].age);
+      $("#first_name").val(response["user"].first_name);
+      $("#last_name").val(response["user"].last_name);
+      // sex = $("#sex").val();
+      // $('input[name=radiosex]').val(response["user"].sex);
+      $("input[name=radiosex][value='"+response["user"].sex+"']").prop('checked', true);
+      $("#birthday").val(response["user"].birthday);
+      $("#location").val(response["user"].location);
+      // $("#preferences").val(response["user"].email);
+  });
+}
+
+
 jQuery(document).ready(function($) {
   "use strict";
 
+ setValuesOnLoad();
   //Contact
-  $('form.signupForm').submit(function() {
+  $('form.profileForm').submit(function() {
     var f = $(this).find('.form-group'),
       ferror = false,
       dateExp = /^(\d{4})\-(\d{1,2})\-(\d{1,2})$/i,
@@ -110,7 +158,7 @@ jQuery(document).ready(function($) {
     else var str = $(this).serialize();
 
     // Here starts the Login Query to Python Server.
-    var f_username = $("#username").val();
+    // var f_username = $("#username").val();
     var f_email = $("#email").val();
     var f_password = $("#password").val();
     // var f_user_type = $("#user_type").val();
@@ -124,18 +172,18 @@ jQuery(document).ready(function($) {
     var f_preferences = $("#preferences").val();
 
     var data_to_send = {
-        "type" : "INSERT_USER",
+        "type" : "MODIFY_USER",
         "username": f_username,
         "email": f_email,
         "password":f_password,
-        "user_type": "USER",
+        // "user_type": "USER",
         "age": f_age,
         "first_name": f_first_name,
         "last_name": f_last_name,
         "sex": f_sex,
         "birthday": f_birthday,
-        "location": f_location,
-        "preferences": ""
+        "location": f_location
+        // "preferences": ""
     }
     var settings = {
         "async": true,
@@ -154,28 +202,25 @@ jQuery(document).ready(function($) {
       console.log(data_to_send);
       console.log(response);
       // alert(response);
-     if(response["users"] === "user inserted successfully"){
+     if(response["users"] === "UPDATED"){
          console.log("Good");
          // Success message
-         alert("Plox");
+         // alert("Plox");
          $("#sendmessage").addClass("show");
          $("#errormessage").removeClass("show");
          $('.contactForm').find("input, textarea").val("");
-
         // Here you should stablish your ID session.
         // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
-
-
         // Redirect to User Interface...
         window.location.replace("userprofile.html?userload="+f_username);
      }else {
          // You shouldn't get here...
         console.log("No estas registrado");
-        alert("ploxsignup");
+        // alert("ploxsignup");
         // Error Message
-        // $("#sendmessage").removeClass("show");
-        // $("#errormessage").addClass("show");
-        // $('#errormessage').html("Usuario no registrado o password incorrecto.");
+        $("#sendmessage").removeClass("show");
+        $("#errormessage").addClass("show");
+        $('#errormessage').html("D: Algo salio mal Intenta de nuevo...");
      }
     });
 
