@@ -167,7 +167,7 @@ jQuery(document).ready(function($) {
 
 
         // Redirect to User Interface...
-        window.location.replace("userinterface.html?userload="+f_username);
+        window.location.replace("userprofile.html?userload="+f_username);
      }else {
          // You shouldn't get here...
         console.log("No estas registrado");

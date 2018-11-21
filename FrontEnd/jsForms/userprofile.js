@@ -212,7 +212,7 @@ jQuery(document).ready(function($) {
         // Here you should stablish your ID session.
         // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
         // Redirect to User Interface...
-        window.location.replace("userinterface.html?userload="+f_username);
+        window.location.replace("userprofile.html?userload="+f_username);
      }else {
          // You shouldn't get here...
         console.log("No estas registrado");
