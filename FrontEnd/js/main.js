@@ -180,22 +180,18 @@ function generate_carousel(){
   });
 }
 
-function event_data(name){
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": IP + EVENTS_ENDPOINT,
-    "method": "GET",
-    "headers": {
-      "Content-Type": "application/json",
-      "cache-control": "no-cache",
-      "Postman-Token": "f870dae0-f862-4529-aef7-f6b381780364"
-    },
-    "processData": false,
-    "data": " {\"action\": \"GET\",\"name\": \""+name+"\"}"
-  }
+function goto_event(){
+//  var id=id_evento;
 
-  $.ajax(settings).done(function (response) {
-      console.log(response);
-  });
+window.location.replace("event.html?id=5bf03ffd43172e1f783de20b");
+}
+
+function getParameterByName(id, url) {
+    if (!url) url = window.location.href;
+    id= id.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + id + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
