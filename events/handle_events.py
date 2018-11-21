@@ -2,6 +2,7 @@
 This program handles the events interactions
 """
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 import config
 
 CLIENT = MongoClient(config.DB_URI,
@@ -13,7 +14,7 @@ collection = DATABASE.events
 
 
 def insert_event(name, image, date, max_part, location, description,
-                 info, event_type, status, num_registered):
+                 info, event_type, status, num_registered, organizer):
     """insert_event
     Calls the DBHelper to insert the event into the database
     categories: MUSICA, DEPORTE, ARTE, CINE, LITERATURA, TEATRO
@@ -24,9 +25,10 @@ def insert_event(name, image, date, max_part, location, description,
         location       (string):  Where is the event taking place
         description    (string):  Additional information which describes the event
         info           (string):  External info like a url to find more information
-        event_type     (string):  Type of the event (concert, movie, release, etc)
+        category     (string):  Type of the event (concert, movie, release, etc)
         status         (string):  Event stats (active, inactive)
         num_registered (int):     Number of people attending to the event
+        organizer       (string): Organizer of the event
 
     Returns:
         string: Confirmation Message
@@ -41,7 +43,8 @@ def insert_event(name, image, date, max_part, location, description,
         "ext_info": info,
         "category": event_type,
         "status": status,
-        "num_registered": num_registered
+        "num_registered": num_registered,
+        "organizer": organizer
 
     })
 
@@ -81,7 +84,31 @@ def search_name(name):
         list: List of events
     """
     retrieved_info = collection.find({"name": name})
+    if retrieved_info is None:
+        return "NOT_FOUND"
     return get_important_info(retrieved_info)
+
+def search_id( event_id):
+        element = collection.find_one({'_id': ObjectId(event_id)})
+        
+        if element is None:
+            return "EVENT_NOT_FOUND"
+        result ={
+            "id" : str(element.get('_id')),
+            "name": element["name"],
+            "event_date": element["date"],
+            "event_type": element["category"],
+            "event_location": element["location"],
+            "image":element['image'],
+            "max_participants": element['max_participants'],
+            "description": element['description'],
+            "ext_info": element['ext_info'],
+            "category": element['category'],
+            "status": element['status'],
+            "num_registered": element['num_registered'],
+            "organizer": ""#element['organizer']
+        }
+        return result
 
 def search_date(date, location, event_type, name):
     """search_date
@@ -143,6 +170,36 @@ def search_type(event_type):
     result = collection.find({"category": event_type})
     return get_important_info(result)
 
+def search_with_various(event_type, location, name):
+    """search_type
+    Search the event by type
+
+    Returns:
+        list: List of events
+    """
+    result = collection.find({"$and":[{"category": event_type},{"location":location},{"name":name}, {"status":"ACTIVE"} ]})
+    return get_important_info(result)
+
+def search_location_type(event_type, location):
+    """search_type
+    Search the event by type
+
+    Returns:
+        list: List of events
+    """
+    result = collection.find({"$and":[{"category": event_type},{"location":location}, {"status":"ACTIVE"} ]})
+    return get_important_info(result)
+
+def search_location_name(location, name):
+    """search_type
+    Search the event by type
+
+    Returns:
+        list: List of events
+    """
+    result = collection.find({"$and":[{"name": name},{"location":location}, {"status":"ACTIVE"} ]})
+    return get_important_info(result)
+
 def get_important_info(retrieved_info):
     """get_important_info
     Append the important info of the event into a list
@@ -153,10 +210,19 @@ def get_important_info(retrieved_info):
     result = []
     for element in retrieved_info:
         result.append({
+            "id" : str(element.get('_id')),
             "name": element["name"],
             "event_date": element["date"],
             "event_type": element["category"],
-            "event_location": element["location"]
+            "event_location": element["location"],
+            "image":element['image'],
+            "max_participants": element['max_participants'],
+            "description": element['description'],
+            "ext_info": element['ext_info'],
+            "category": element['category'],
+            "status": element['status'],
+            "num_registered": element['num_registered'],
+            "organizer":""#element['organizer']
         })
 
     return result

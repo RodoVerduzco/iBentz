@@ -3,6 +3,9 @@ This program handles the events interactions
 """
 
 import dbhelper.dbhelper as DBHELPER
+from bson.objectid import ObjectId
+from datetime import datetime, timedelta
+import smtplib
 db = DBHELPER.DBHelper()
 
 def insert_user(username, email, user_type, password, age, first_name, last_name, sex, birthday, location):
@@ -22,8 +25,10 @@ def insert_user(username, email, user_type, password, age, first_name, last_name
             "sex": sex,
             "birthday": birthday,
             "location": location,
-            "preferences": ""
+            "preferences": [],
+            "events":""
         })
+        
     #db.user_insert(user_name, email, password, age, first_name, last_name, sex, birthday, location)
         return "user inserted successfully"
     return "User/email already exists"
@@ -41,12 +46,12 @@ def delete_email(email):
 
     return "User " + email + " was deleted"
 
-def modify_user(username, email, password, age, first_name, last_name, sex, birthday, location):
+def modify_user(usr, email, password, age, first_name, last_name, sex, birthday, location):
 
-    result = db.collection.users.update_one({"$or": [{"name": username}, {"email":username}]},{"$set": [{"email":email}, {"password":password}, {"age", age}, {"first_name":first_name},\
-    {"last_name":last_name}, {"sex":sex}, {"birthday":birthday},{"location":location}]}, upsert=False)
+    db.collection.users.update_one({"$or": [{"name": usr}, {"email":usr}]},{"$set": {"email":email, "password":password, "age": age, "first_name":first_name,\
+    "last_name":last_name, "sex":sex, "birthday":birthday,"location":location}}, upsert=False)
 
-    return "Update done successfully for "+username
+    return "UPDATED"
 
 
 def validate_user(username, password):
@@ -93,7 +98,8 @@ def read_all():
             "sex": element['sex'],
             "birthday": element['birthday'],
             "location": element['location'],
-            "preferences": element['preferences']
+            "preferences": element['preferences'],
+            "events": element['events']
         })
     return result
 
@@ -151,7 +157,8 @@ def search_by_type(type_usr):
             "sex": element['sex'],
             "birthday": element['birthday'],
             "preferences":element['preferences'],
-            "location": element['location']
+            "location": element['location'],
+            "events": element['events']
         })
     return result
 
@@ -176,6 +183,16 @@ def add_new_preference(user, preferences):
             with_added_params.append(preference)
         db.collection.users.update({"name":user['name']},{"$set":{"preferences":with_added_params}})
         return "PREFERENCES_ADDED"
+
+def update_preferences(user, preferences):
+    user = search_username(user)
+    if(user == "USER_NOT_FOUND"):
+        return "USER_NOT_FOUND"
+    else:
+         db.collection.users.update({"name":user['name']},{"$set":{"preferences":preferences}})
+    
+    return "PREFERENCES_ADDED"
+    
 
 def delete_preferences(user, preferences):
     user = search_username(user)
@@ -211,3 +228,132 @@ def get_various_parameters(user, parameters):
                 desired_info.update({element:previous_info[element]})
 
         return desired_info
+
+def add_event(user, event_id):
+    print("inserted")
+    user_info = search_username(user)
+    flag =0
+    print(user_info)
+    if user_info == "USER_NOT_FOUND":
+        return "ERROR_EVENT_ALREADY_EXISTED"
+    else:
+        event_info = db.collection.events.find_one({'_id': ObjectId(event_id)})
+        already_added_events = user_info['events']
+        for event in user_info['events']:
+            if event_info['name'] == event['name']:
+                flag =1
+        
+        if flag ==0:
+            already_added_events.append({"name": event_info['name'], "date":event_info['date'], "sent":"false"})
+            db.collection.users.update({"name":user_info['name']},{"$set":{"events":already_added_events}})
+            return "EVENT ADDED"
+
+def get_org_event(user):
+    user_info = search_username(user)
+    if user_info == "USER_NOT_FOUND":
+        return "USER_NOT_FOUND"
+    else:
+        events = db.collection.events.find({'organizer': user})
+        if events is None:
+            return "NO_EVENTS_FOUND"
+        
+    result = []
+    for element in events:
+        result.append({
+            "id" : str(element.get('_id')),
+            "name": element["name"],
+            "event_date": element["date"],
+            "event_type": element["category"],
+            "event_location": element["location"],
+            "image":element['image'],
+            "max_participants": element['max_participants'],
+            "description": element['description'],
+            "ext_info": element['ext_info'],
+            "category": element['category'],
+            "status": element['status'],
+            "num_registered": element['num_registered'],
+            "organizer":element['organizer']
+        })
+
+    return result
+
+
+
+def delete_event(user, event_id):
+    user_info = search_username(user)
+    if user_info == "USER_NOT_FOUND":
+        return "ERROR_USER_NOT_FOUND"
+    else:
+        event_info = db.collection.events.find_one({'_id': ObjectId(event_id)})
+        my_events =[]
+        for event in user_info['events']:
+            if event_info['name'] == event['name']: pass
+            my_events.append(event)
+        
+        db.collection.users.update({"name":user_info['name']},{"$set":{"events":my_events}})
+        return "EVENT ADDED"
+
+def get_user_recommendations(usr):
+
+    usr_preferences = get_parameter(usr,"preferences")
+    if usr_preferences == "USER_NOT_FOUND":
+        return usr_preferences
+    print(usr_preferences)
+    recommendations =[]
+    results = db.collection.events.aggregate([{ "$sample": { "size": 3 } }])
+    #results = db.collection.events.find({"$and":[{"category":{"$in":usr_preferences}},{"status":"ACTIVE"}]})
+    #print(results)
+    for element in results:
+        #print(str(element['category']) in usr_preferences)
+        if str(element['category']) in usr_preferences and element['status'] =="ACTIVE":
+                recommendations.append({"id" : str(element.get('_id')),
+                                        "name": element["name"],
+                                        "event_date": element["date"],
+                                        "event_type": element["category"],
+                                        "event_location": element["location"],
+                                        "image":element['image'],
+                                        "max_participants": element['max_participants'],
+                                        "description": element['description'],
+                                        "ext_info": element['ext_info'],
+                                        "category": element['category'],
+                                        "status": element['status'],
+                                        "num_registered": element['num_registered'],
+                                        "organizer": element['organizer']})
+                
+    print(recommendations)
+    return recommendations
+
+def send_mails():
+
+    gmail_user = "gabo.garces96@gmail.com"
+    gmail_pwd = "Ggc#27&25"
+
+    users = read_all()
+    events_t = []
+    for user in users:
+        if user['user_type'] == "USER":
+            events_t = []
+            for event in user['events']:
+                
+                if event['sent'] == "false" and (str(datetime.strptime(event['date'], "%Y-%m-%d").date()- timedelta(days=10)) == str(datetime.now().strftime("%Y-%m-%d"))):
+                    #print(event['name'])
+                    event['sent'] = "true"
+                    TO = 'gabo-fly@hotmail.com'
+                    SUBJECT = "iBentz- Your event "+event['name']+" is coming up!"
+                    TEXT = "testing"
+                    server = smtplib.SMTP('smtp.gmail.com', 587)
+                    server.ehlo()
+                    server.starttls()
+                    server.login(gmail_user, gmail_pwd)
+                    BODY = '\r\n'.join(['To: %s' % TO,
+                            'From: %s' % gmail_user,
+                            'Subject: %s' % SUBJECT,
+                            '', TEXT])
+                    server.sendmail(gmail_user, [TO], BODY)
+                events_t.append(event)
+            db.collection.users.update({"name":user['name']},{"$set":{"events":events_t}})
+
+
+            
+
+    
