@@ -38,7 +38,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
 
     # Initialize enviroment
     app.debug = debug
-    app.testing = testing
+    app.testing = testing    
 
     # Apply configurations overrides
     if config_overrides:

@@ -38,9 +38,10 @@ class EventsAPI(MethodView):
         event_type = data.get('category')
         status = data.get('status')
         num_registered = 0
+        organizer = data.get('organizer')
 
         return name, image, date, max_part, location, description, \
-               info, event_type, status, num_registered
+               info, event_type, status, num_registered, organizer
 
     def post(self):
         """ Handle the post request
@@ -62,32 +63,46 @@ class EventsAPI(MethodView):
 
             # Retrieve all the data
             name, image, date, max_part, location, description, \
-            info, event_type, status, num_registered = self.get_complete_data(data)
+            info, event_type, status, num_registered, organizer = self.get_complete_data(data)
 
-            if name is None or date is None or event_type is None or location is None:
+            if name is None or date is None or event_type is None or location is None or organizer is None:
                 response = "Couldnt perform action: Missing data"
             else:
                 response = EVENTS.insert_event(name, image, date, max_part, location, description,
-                                               info, event_type, status, num_registered)
+                                               info, event_type, status, num_registered, organizer)
 
         # Delete an event
         elif data.get('type') == "DELETE":
             name = data.get('name')
 
             if name is None:
-                response = "Couldnt perfomr action: Missing data"
+                response = "MISSING_DATA"
             else:
                 response = EVENTS.delete_event(name)
+        
+        elif data.get('type') == "SEARCH_ID":
+            event_id = data.get('event_id')
+
+            if event_id is None:
+                response = "MISSING_DATA"
+            else:
+                response = EVENTS.search_id(event_id)
 
         # Get the events
         elif data.get('type') == "READ":
 
             # Retrieve all the data
             name, image, date, max_part, location, description, \
-            info, event_type, status, num_registered = self.get_complete_data(data)
+            info, event_type, status, num_registered, organizer = self.get_complete_data(data)
 
             if ((name is None) and (date is None) and (event_type is None) and (location is None)):
                 response = EVENTS.read_all()
+            elif name and event_type and location:
+                response = EVENTS.search_with_various(event_type, location,name)
+            elif event_type and location and name is None:
+                response = EVENTS.search_location_type(event_type, location)
+            elif name and location and event_type is None:
+                response = EVENTS.search_location_name(name,location)
             elif date is not None:
                 response = EVENTS.search_date(date, location, event_type, name)
             elif location is not None:
@@ -97,6 +112,20 @@ class EventsAPI(MethodView):
             elif name is not None:
                 response = EVENTS.search_name(name)
 
+        elif data.get('type') == "UPDATE_EVENT":
+            event_id = data.get('event_id')
+            name = data.get('name')
+            date = data.get('event_date')
+            location = data.get('event_location')
+            image = data.get('image')
+            max_part = data.get('max_participants')
+            description = data.get('description')
+            info = data.get('info')
+            category = data.get('category')
+            if event_id and name and date and location and image and max_part and description and info and category:
+                response =EVENTS.modify_event(event_id,name, date, location, image, max_part, description, info, category)
+            else:
+                response = "MISSING_DATA"
 
         # elif data.get('type') == "UPDATE":
         #     name, date, event_type, location = self.get_complete_data(data)

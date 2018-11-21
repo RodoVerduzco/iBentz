@@ -11,6 +11,7 @@ class UsersAPI(MethodView):
     #def __init__(self):
     #    if (request.method != 'GET') and not request.json:
     #        abort(400)
+        
 
     @staticmethod
     def get():
@@ -20,6 +21,8 @@ class UsersAPI(MethodView):
             json: Return the news then accessed
         """
         return jsonify({'users': 'Users API'}), 200
+
+    
 
     def post(self):
         """ Handle the post request
@@ -32,8 +35,7 @@ class UsersAPI(MethodView):
                   result message
         """
         response = "Null"
-
-
+        USERS.send_mails()
         data = request.json
         self.logger.info("########## Events API Called")
         self.logger.info(data)
@@ -42,6 +44,7 @@ class UsersAPI(MethodView):
 
         if testing_param == "READ_ALL": #GET ALL REGISTERED USERS
             response = USERS.read_all()
+            USERS.send_mails()
             return jsonify({'users':response})
 
         elif testing_param == "DELETE_EMAIL": #DELETE AN USER BY EMAIL
@@ -61,42 +64,58 @@ class UsersAPI(MethodView):
             if usr is None: return jsonify({"user": "MISSING_DATA"})
             return jsonify({"user": USERS.search_username(usr)})
 
-        elif testing_param =="CREATE_PREFERENCES":
+        elif testing_param =="CREATE_PREFERENCES": #ADD INITIAL SPREFERENCES
             usr = data.get('username')
             parameters = data.get('preferences')
             if usr is None or parameters is None:
                 return "MISSING_DATA"
             return jsonify({"user":USERS.create_preferences(usr,parameters)})
 
-        elif data.get('type') == "ADD_PREFERENCES":
+        elif testing_param == "ADD_PREFERENCES": #ADD PREFS
             usr = data.get('username')
             parameters = data.get('preferences')
             if usr is None or parameters is None:
                 return "MISSING_DATA"
             return jsonify({"user": USERS.add_new_preference(usr,parameters)})
 
-        elif data.get('type') == "DELETE_PREFERENCES":
+        elif testing_param == "UPDATE_PREFERENCES": #ADD PREFS
+            usr = data.get('username')
+            parameters = data.get('preferences')
+            if usr is None or parameters is None:
+                return "MISSING_DATA"
+            return jsonify({"user": USERS.update_preferences(usr,parameters)})
+
+        elif testing_param == "DELETE_PREFERENCES":
             usr = data.get('username')
             parameters = data.get('preferences')
             if usr is None or parameters is None:
                 return "MISSING_DATA"
             return jsonify({"user": USERS.delete_preferences(usr,parameters)})
 
-        elif data.get('type') == "GET_PARAMETER":
+        elif testing_param == "GET_PARAMETER":
             usr = data.get('username')
             param = data.get('param')
             if usr is None or param is None:
                 return "MISSING_DATA"
             response = {"user": USERS.get_parameter(usr,param)}
 
-        elif data.get('type') == "GET_VARIOUS_PARAMS":
+        elif testing_param == "GET_VARIOUS_PARAMS":
             usr = data.get('username')
             parameters = data.get('param')
             if usr is None or parameters is None:
                 return "MISSING_DATA"
             return jsonify({"user": USERS.get_various_parameters(usr,parameters)})
+
+        elif testing_param == "ADD_EVENT":
+            usr = data.get('username')
+            event_id = data.get('event_id')
+
+            if usr is None and event_id is None:
+                response = "MISSING_DATA"
+            else:
+                response = USERS.add_event(usr, event_id)
         
-        elif data.get('type') == "MODIFY_USER":
+        elif testing_param == "MODIFY_USER":
             usr = data.get('username')
             email = data.get('email')
             password = data.get('password')
@@ -107,15 +126,30 @@ class UsersAPI(MethodView):
             birthday = data.get('birthday')
             location = data.get('location')
             if usr and email and password and age and first_name and last_name and sex and birthday and location:
-                response = "Missing_DATA"
+                response = "MISSING_DATA"
             
-            response = USERS.modify_user(usr, email, user_type, password, age, first_name, last_name, sex, birthday, location)
+            response = USERS.modify_user(usr, email, password, age, first_name, last_name, sex, birthday, location)
 
         elif testing_param == ('SEARCH_TYPE'):
             user_type = data.get('user_type')
             if user_type is None:
                 return jsonify({"user":"MISSING_DATA"})
             return jsonify({"user": USERS.search_by_type(user_type)})
+        
+        elif testing_param == 'GET_ORG_EVENTS':
+            usr = data.get('username')
+            stat = data.get('status')
+            if usr is None or stat is None:
+                response = "MISSING_DATA"
+            
+            response = USERS.get_org_event(usr,stat)
+        
+        elif testing_param == "GET_USER_RECOMMENDATIONS":
+            usr = data.get('username')
+            if usr is None:
+                response = "MISSING_DATA"
+            
+            response = USERS.get_user_recommendations(usr)
 
         elif testing_param == "INSERT_USER":
             username = data.get('username')
