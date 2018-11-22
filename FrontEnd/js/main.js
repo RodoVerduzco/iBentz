@@ -1,5 +1,5 @@
-//const IP = "http://172.20.10.2:5000";
-const IP = "http://0.0.0.0:8080";
+const IP = "http://172.20.10.2:5000";
+// const IP = "http://0.0.0.0:8080";
 const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 
 jQuery(document).ready(function( $ ) {
@@ -188,9 +188,8 @@ function generate_carousel(){
 }
 
 function goto_event(){
-//  var id=id_evento;
-
-window.location.replace("event.html?id=5bf03ffd43172e1f783de20b");
+    //  var id=id_evento;
+    window.location.replace("event.html?id=5bf03ffd43172e1f783de20b");
 }
 
 function getParameterByName(id, url) {
