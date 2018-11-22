@@ -1,4 +1,4 @@
-const IP = "http://0.0.0.0:8080";
+const IP = "http://0.0.0.0:5000";
 const USERS_ENDPOINT = "/api/v1/users/search_users";
 
 function users_table() {
@@ -18,17 +18,24 @@ function users_table() {
 
   $.ajax(settings).done(function (response) {
     response.users.forEach(function (element) {
+      var events="";
       var eventos = element.events;
-      if (!element.events)
-      eventos = "Sin Eventos";
+
+      if (!element.events || element.events=="")
+        events = "Sin Eventos";
+      else{
+        eventos.forEach(function (elements){
+          events += elements.name + "-" + elements.date + "| ";
+        });
+      }
 
       var row = "<tr><td>"+ element.first_name +"</td>"+
       "<td>"+ element.last_name + "</td>  "+
       "<td>"+ element.email + "</td> "+
       "<td>"+ element.preferences + "</td>"+
-      "<td>"+ eventos + "</td></tr>";
-
+      "<td>"+ events + "</td></tr>";
       $('#users-table').append(row);
+
     });
   });
 }
