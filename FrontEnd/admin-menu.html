@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>TheEvent - Bootstrap Event Template</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicons -->
+	<link href="img/favicon.png" rel="icon">
+	<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+	<!-- Bootstrap CSS File -->
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Libraries CSS Files -->
+	<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="lib/animate/animate.min.css" rel="stylesheet">
+	<link href="lib/venobox/venobox.css" rel="stylesheet">
+	<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+	<!-- Main Stylesheet File -->
+	<link href="css/styleForm.css" rel="stylesheet">
+
+	<!-- =======================================================
+    Theme Name: TheEvent
+    Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+	<!--==========================
+      Header
+    ============================-->
+	<header id="header" class="header-scrolled">
+		<nav id="nav-menu-container">
+			<ul class="nav-menu">
+				<li class="menu-active"><a href="index.html#intro">Inicio</a></li>
+				<li><a href="index.html#speakers">Eventos</a></li>
+				<li><a href="index.html#gallery">Popular</a></li>
+				<li><a href="index.html#contact">Contacto</a></li>
+				<li class="buy-tickets"><a href="signup.html">Sign Up</a></li>
+				<li class="buy-tickets"><a href="login.html">Login</a></li>
+			</ul>
+		</nav><!-- #nav-menu-container -->
+  </header><!-- #header -->
+
+	<!--==========================
+    Login Form
+  ============================-->
+	<BR>
+	<BR>
+	<BR>
+	<BR>
+	<section id="contact" class="section-bg wow fadeInUp">
+
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col col-lg-12">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+					  <li class="nav-item">
+					    <a class="nav-link active" id="users-tab" data-toggle="tab" href="#users" role="tab" aria-controls="users" aria-selected="true">Usuarios</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="add-events-tab" data-toggle="tab" href="#add-events" role="tab" aria-controls="add-events" aria-selected="false">Agregar Eventos</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="create-organizers-tab" data-toggle="tab" href="#create-organizers" role="tab" aria-controls="create-organizers" aria-selected="false">Crear Organizadores</a>
+					  </li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+					  <div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="users-tab">
+							<div class="section-header">
+								<div class="container">
+									<br>
+									<div class="row justify-content-md-center">
+											<h3> Usuarios en el Sistema</h3>
+									</div>
+									<div class="row">
+									</div>
+										<table class="table table-bordered table-hover" id="tab_logic">
+											<thead>
+												<tr >
+													<th class="text-center">	Nombre </th>
+													<th class="text-center"> Apellidos </th>
+													<th class="text-center"> Email </th>
+													<th class="text-center"> Preferencias </th>
+							            <th class="text-center"> Eventos </th>
+												</tr>
+											</thead>
+											<tbody id="users-table">
+												<tr></tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+						</div>
+					  <div class="tab-pane fade" id="add-events" role="tabpanel" aria-labelledby="add-events-tab">
+							<div class="section-header">
+								<div class="container">
+									<br>
+									<div class="row justify-content-md-center">
+											<h3> Agregar Eventos</h3>
+									</div>
+									<div class="row">
+										<form id="add-events-form">
+										  <div class="form-group">
+										    <label for="event-name-1">Nombre del Evento</label>
+										    <input type="text" class="form-control" id="event-name" placeholder="Nombre">
+										  </div>
+											<div class="form-group">
+												<label for="event-date-1">Fecha del Evento</label>
+												<input type="text" class="form-control" id="event-date" placeholder="Fecha">
+												<small id="event-date" class="form-text text-muted">De la forma YYYY-MM-DD</small>
+											</div>
+											<div class="form-group">
+										    <label for="event-participants-1">Número de Participantes</label>
+										    <input type="text" class="form-control" id="event-participants" placeholder="Numero de participantes">
+										  </div>
+											<div class="form-group">
+										    <label for="event-location-1">Ubicación del Evento</label>
+												<select class="custom-select mr-sm-2" id="event-location">
+																		<option value="AGS">Aguascalientes</option>
+													  		  	<option value="BCN">Baja Calfornia</option>
+													  		  	<option value="BCS">Baja California Sur</option>
+													  		  	<option value="CAM">Campeche</option>
+													  		  	<option value="CHP">Chiapas</option>
+													  		  	<option value="CHI">Chihuahua</option>
+													  		  	<option value="DIF">Ciudad de México</option>
+													  		  	<option value="COA">Coahuila</option>
+													  		  	<option value="COL">Colima</option>
+													  		  	<option value="DUR">Durango</option>
+													  		  	<option value="GTO">Guanajuato</option>
+													  		  	<option value="GRO">Guerrero</option>
+													  		  	<option value="HGO">Hidalgo</option>
+													  		  	<option value="JAL">Jalisco</option>
+													  		  	<option value="MEX">México</option>
+													  		  	<option value="MIC">Michoacán</option>
+													  		  	<option value="MOR">Morelos</option>
+													  		  	<option value="NAY">Nayarit</option>
+													  		  	<option value="NLE">Nuevo León</option>
+													  		  	<option value="OAX">Oaxaca</option>
+													  		  	<option value="PUE">Puebla</option>
+													  		  	<option value="QRO">Querétaro</option>
+													  		  	<option value="ROO">Quintana Roo</option>
+													  		  	<option value="SLP">San Luis Potosí</option>
+													  		  	<option value="SIN">Sinaloa</option>
+													  		  	<option value="SON">Sonora</option>
+													  		  	<option value="TAB">Tabasco</option>
+													  		  	<option value="TAM">Tamaulipas</option>
+													  		  	<option value="TLX">Tlaxcala</option>
+													  		  	<option value="VER">Veracruz</option>
+													  		  	<option value="YUC">Yucatán</option>
+													  		  	<option value="ZAC">Zacatecas</option>
+												</select>
+										  </div>
+											<div class="form-group">
+												<label for="event-image-1">Imagen del Evento</label>
+												<input type="file" class="form-control-file" id="event-img">
+											</div>
+											<div class="form-group">
+										    <label for="event-description-1">Descripción del Evento</label>
+										    <input type="text" class="form-control" id="event-desc" placeholder="Descripcion">
+										  </div>
+											<div class="form-group">
+												<label for="event-info-1">Información Adicional</label>
+												<input type="text" class="form-control" id="event-info" placeholder="Info">
+											</div>
+											<div class="form-group">
+												<label for="event-organizer-1">Organizador del Evento</label>
+												<input type="text" class="form-control" id="event-org" placeholder="Organizador">
+											</div>
+
+											<div class="form-group">
+												<label for="event-organizer-1">Categoría</label>
+												<div class="col-sm-10">
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Deporte" checked>
+														<label class="form-check-label" for="gridRadios1">
+															Deporte
+														</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Música">
+														<label class="form-check-label" for="gridRadios2">
+															Música
+														</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="Arte">
+														<label class="form-check-label" for="gridRadios3">
+															Arte
+														</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="Cine">
+														<label class="form-check-label" for="gridRadios4">
+															Cine
+														</label>
+													</div>
+												<div class="form-check">
+													<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5" value="Teatro">
+													<label class="form-check-label" for="gridRadios5">
+														Teatro
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<button type="submit" class="btn btn-primary" id="add-events">Agregar</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					  <div class="tab-pane fade" id="create-organizers" role="tabpanel" aria-labelledby="create-organizers-tab">org...</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	<!-- #contact -->
+	<!-- #Login Form  -->
+
+
+	<!--==========================
+    Footer
+  ============================-->
+	<footer id="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-3 col-md-6 footer-info">
+						<img src="img/logo.png" alt="TheEvenet">
+						<p>In alias aperiam. Placeat tempore facere. Officiis voluptate ipsam vel eveniet est dolor et totam porro. Perspiciatis ad omnis fugit molestiae recusandae possimus. Aut consectetur id quis. In inventore consequatur ad voluptate cupiditate debitis
+							accusamus repellat cumque.</p>
+					</div>
+
+					<div class="col-lg-3 col-md-6 footer-links">
+						<h4>Useful Links</h4>
+						<ul>
+							<li><i class="fa fa-angle-right"></i> <a href="#">Home</a></li>
+							<li><i class="fa fa-angle-right"></i> <a href="#">About us</a></li>
+							<li><i class="fa fa-angle-right"></i> <a href="#">Services</a></li>
+							<li><i class="fa fa-angle-right"></i> <a href="#">Terms of service</a></li>
+							<li><i class="fa fa-angle-right"></i> <a href="#">Privacy policy</a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-3 col-md-6 footer-contact">
+						<h4>Contact Us</h4>
+						<p>
+							A108 Adam Street <br> New York, NY 535022<br> United States <br>
+							<strong>Phone:</strong> +1 5589 55488 55<br>
+							<strong>Email:</strong> info@example.com<br>
+						</p>
+
+						<div class="social-links">
+							<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+							<a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+							<a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+							<a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="copyright">
+				&copy; Copyright <strong>TheEvent</strong>. All Rights Reserved
+			</div>
+			<div class="credits">
+				<!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=TheEvent
+        -->
+				Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+			</div>
+		</div>
+	</footer>
+	<!-- #footer -->
+
+	<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+	<!-- JavaScript Libraries -->
+	<script src="lib/jquery/jquery.min.js"></script>
+	<script src="lib/jquery/jquery-migrate.min.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="lib/easing/easing.min.js"></script>
+	<script src="lib/superfish/hoverIntent.js"></script>
+	<script src="lib/superfish/superfish.min.js"></script>
+	<script src="lib/wow/wow.min.js"></script>
+	<script src="lib/venobox/venobox.min.js"></script>
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+	<!-- Contact Form JavaScript File -->
+	<script src="jsForms/addevents.js"></script>
+
+	<!-- Template Main Javascript File -->
+	<script src="js/login.js"></script>
+	<script src="js/admin-menu.js"></script>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
-const IP = "http://172.20.10.2:5000";
+//const IP = "http://172.20.10.2:5000";
+const IP = "http://0.0.0.0:8080";
 const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 
 jQuery(document).ready(function( $ ) {
@@ -164,6 +165,7 @@ function generate_carousel(){
   };
 
   $.ajax(settings).done(function (response) {
+    console.log(response);
     response.events.forEach(function(element) {
       var img = $('<img />').attr({
             'id': 'myImage'+element.name,
