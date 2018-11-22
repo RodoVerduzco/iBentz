@@ -165,14 +165,22 @@ function generate_carousel(){
   };
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
+    console.log(response)
+    var usr = getParameterByName('userload')
+    var username = usr;
+    if(usr == null)
+      username = "visit_0123";
     response.events.forEach(function(element) {
+      
       var img = $('<img />').attr({
             'id': 'myImage'+element.name,
             'src': '../FrontEnd/img/gallery/' + element.image,
             'width': "200px",
             'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
-        }).appendTo('#events-carousel');
+        });
+        var link = $('<a />').attr({
+          'href': "./event.html?event_id="+element.id+"&usr="+username
+        }).prepend(img).appendTo('#events-carousel');
     });
 
     // Gallery carousel (uses the Owl Carousel library)
@@ -187,9 +195,13 @@ function generate_carousel(){
   });
 }
 
-function goto_event(){
-    //  var id=id_evento;
-    window.location.replace("event.html?id=5bf03ffd43172e1f783de20b");
+function goto_event(code, user){
+//  var id=id_evento;
+alert(code)
+var username = user;
+if(user == "")
+  username = "visit_0123"
+window.location.replace("./event.html?event_id="+code+"&usr="+username);
 }
 
 function getParameterByName(id, url) {
