@@ -1,5 +1,5 @@
-//const IP = "http://172.20.10.2:5000";
-const IP = "http://0.0.0.0:8080";
+const IP = "http://172.20.10.2:5000";
+// const IP = "http://0.0.0.0:8080";
 const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 
 jQuery(document).ready(function( $ ) {
@@ -165,15 +165,11 @@ function generate_carousel(){
   };
 
   $.ajax(settings).done(function (response) {
-<<<<<<< HEAD
-    console.log(response);
-=======
     console.log(response)
     var usr = getParameterByName('userload')
     var username = usr;
     if(usr == null)
       username = "visit_0123";
->>>>>>> BackEndConfig_EventView
     response.events.forEach(function(element) {
       
       var img = $('<img />').attr({

@@ -81,46 +81,27 @@
 				<!-- <p>Please insteed.</p> -->
 			</div>
 			<div class="text-center">
-				<button type="button" class="myButton" onclick="location.href='./userprofile.html'">My Profile</button>
-				<button type="button" class="myButton" onclick="location.href='./userpreferences.html'">Event Preferences</button>
+				<button type="button" class="myButton" onclick="goToMyProfile()">My Profile</button>
+				<button type="button" class="myButton" onclick="goToMyPreferences()">Event Preferences</button>
 			</div>
 			<br>
 			<br>
-			<div class="form">
-				<div id="sendmessage">Your message has been sent. Thank you!</div>
-				<div id="errormessage"></div>
-				<form action="" method="post" role="form" class="profileForm">
-					<div class="form-group text-center">
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck1" name="mypreferences" value="MUSICA">
-							<label class="custom-control-label" for="customCheck1">MUSICA</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck2" name="mypreferences" value="ARTE">
-							<label class="custom-control-label" for="customCheck2">ARTE</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck3" name="mypreferences" value="CINE">
-							<label class="custom-control-label" for="customCheck3">CINE</label>
-						</div>
-					</div>
-					<div class="form-group text-center">
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck4" name="mypreferences" value="LITERATURA">
-							<label class="custom-control-label" for="customCheck4">LITERATURA</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck5" name="mypreferences" value="TEATRO">
-							<label class="custom-control-label" for="customCheck5">TEATRO</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck6" name="mypreferences" value="DEPORTE">
-							<label class="custom-control-label" for="customCheck6">DEPORTE</label>
-						</div>
-					</div>
-					<br>
-					<div class="text-center"><button type="button" class="backLink">BACK</button><button type="submit">MODIFY</button></div>
-				</form>
+			<div>
+				<h2>My events</h2>
+			</div>
+			<section id="gallery" class="wow fadeInUp">
+				  <div id="myEvents" class="owl-carousel gallery-carousel">
+					  <!-- Set my js content here... -->
+				  </div>
+			</section>
+			<br><br>
+			<div>
+				<em><h2>Recommended events</h2></em>
+			</div>
+			<section id="gallery2" class="wow fadeInUp">
+				<div id="myRecommendedEvents" class="owl-carousel gallery-carousel">
+					<!-- Set my js content here... -->
+				</div>
 			</div>
 		</div>
 	</section>
@@ -217,7 +198,7 @@
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
 	<!-- Contact Form JavaScript File -->
-	<script src="jsForms/userpreferences.js"></script>
+	<script src="jsForms/userinterface.js"></script>
 
 	<!-- Template Main Javascript File -->
 	<script src="js/login.js"></script>
