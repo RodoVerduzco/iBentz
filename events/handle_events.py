@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import config
 
+
 CLIENT = MongoClient(config.DB_URI,
                      connectTimeoutMS=30000,
                      socketTimeoutMS=None,

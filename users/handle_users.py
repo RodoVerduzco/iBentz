@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
 db = DBHELPER.DBHelper()
 
 def insert_user(username, email, user_type, password, age, first_name, last_name, sex, birthday, location):

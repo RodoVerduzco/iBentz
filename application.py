@@ -35,7 +35,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     app = Flask(__name__)
     CORS(app, resources={r"/*": {"origins": "*"}})
     app.config.from_object(config)
-
+    
     # Initialize enviroment
     app.debug = debug
     app.testing = testing    

@@ -7,7 +7,6 @@ var url = IP+EVENTS_ENDPOINT;
 const urlParams = new URLSearchParams(window.location.search);
 const f_username = urlParams.get('userload');
 
-
 jQuery(document).ready(function($) {
   "use strict";
 
