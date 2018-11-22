@@ -79,26 +79,7 @@ function register_event(){
 
  $.ajax(settings).done(function (response) {
       console.log(response);
-        $("#name").text(response['events']['name']);
-        var img2="./img/gallery/"+response['events']['image'];
-        console.log(img2);
-        $("#img1").text(img2);
-        $("#img1").prop("src",img2);
-        $("#date").text(response['events']['event_date']);
-        $("#location").text(response['events']['event_location']);
-        $("#description").text(response['events']['description']);
-        $("#info").text(response['events']['ext_info']);
-        //$("#category").text(response['events']['category']);
-        $("#status").text(response['events']['status']);
-        $("#num_registered").text(response['events']['num_registered']);
-
-        var usr = getParameterByName('usr');
-        usern = usr;
-        $('#addEvent').show();
-        if(usr == "visit_0123" || $('#status').text() == "INACTIVE"){
-          $('#addEvent').hide();
-        }
-      
+      //if(response[''])
       //window.location.replace("./event.html?name="+name+"&image="+image+"&date="+date+"&location="+location+"&description="+description+"&info="+info+"&category="+category+"&status="+status+"&num_registered="+num_registered+"\n");
   });
 }
