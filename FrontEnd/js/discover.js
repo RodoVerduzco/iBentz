@@ -59,23 +59,23 @@ function filter(){
 
 
 
-     var empieza = "<div class=\"col-lg-4 col-md-6\" style=\"padding:30px\"><div class=\"speaker\"><img src='img/gallery/7";
-      var empieza1 = ".jpg' class=\"img-fluid\"><div class=\"details\"><h3>";
+    var empieza = "<div class=\"col-lg-4 col-md-6\" style=\"padding:30px\"><div class=\"speaker\"><a href=\"javascript:llamada('";
+     var empieza0 ="');\"><img src='img/gallery/";
+      var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
       var empieza3 = "</br><b>Fecha: </b>" 
       var empieza4 = "</p></div></div></div>"
 
   $.ajax(settings).done(function (response) {
       console.log(response);
-      $('#resultados').empty();
+        $('#resultados').empty();
         $.each(response.events, function(idx, value){      
-          $("#resultados").append(empieza + empieza1 + 
-            response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+ 
+          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+ 
             empieza3+response['events'][idx]['event_date']+empieza4);
 
         });
 
-    }); 
+    });  
 
   });
 }
@@ -124,8 +124,8 @@ jQuery(document).ready(function($) {
     }
   }
      var empieza = "<div class=\"col-lg-4 col-md-6\" style=\"padding:30px\"><div class=\"speaker\"><a href=\"javascript:llamada('";
-     var empieza0 ="');\"><img src='img/gallery/7";
-      var empieza1 = ".jpg' class=\"img-fluid\"></a><div class=\"details\"><h3>";
+     var empieza0 ="');\"><img src='img/gallery/";
+      var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
       var empieza3 = "</br><b>Fecha: </b>" 
       var empieza4 = "</p></div></div></div>"
@@ -134,7 +134,7 @@ jQuery(document).ready(function($) {
       console.log(response);
         $('#resultados').empty();
         $.each(response.events, function(idx, value){      
-          $("#resultados").append(empieza +response['events'][idx]['id']+empieza0+empieza1 + response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+ 
+          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+ 
             empieza3+response['events'][idx]['event_date']+empieza4);
 
         });
