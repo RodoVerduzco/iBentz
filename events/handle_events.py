@@ -50,7 +50,7 @@ def insert_event(name, image, date, max_part, location, description,
 
     return "Event inserted successfully"
 
-def delete_event(event_name):
+def delete_event(event_id):
     """delete_event
     Calls the DBHelper to delete the event into the database
 
@@ -60,10 +60,10 @@ def delete_event(event_name):
     Returns:
         string: Confirmation Message
     """
-    delete_query = {"name": event_name}
-    collection.update_one(delete_query, {"$set":{"status":"ACTIVE"}})
+    delete_query = {"_id": ObjectId(event_id)}
+    collection.update_one(delete_query, {"$set":{"status":"INACTIVE"}})
 
-    return "Event " + event_name + " was deleted"
+    return "Event " + event_id + " was deleted"
 
 def read_all():
     """read_all

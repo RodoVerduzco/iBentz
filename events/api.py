@@ -73,12 +73,12 @@ class EventsAPI(MethodView):
 
         # Delete an event
         elif data.get('type') == "DELETE":
-            name = data.get('name')
+            ev_id = data.get('id')
 
-            if name is None:
+            if ev_id is None:
                 response = "MISSING_DATA"
             else:
-                response = EVENTS.delete_event(name)
+                response = EVENTS.delete_event(ev_id)
         
         elif data.get('type') == "SEARCH_ID":
             event_id = data.get('event_id')
