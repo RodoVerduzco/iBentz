@@ -28,7 +28,7 @@ def insert_user(username, email, user_type, password, age, first_name, last_name
             "birthday": birthday,
             "location": location,
             "preferences": [],
-            "events":""
+            "events":[]
         })
         
     #db.user_insert(user_name, email, password, age, first_name, last_name, sex, birthday, location)
@@ -218,6 +218,23 @@ def get_parameter(user, param):
         previous_info = db.collection.users.find_one({"name":user['name']}, {"_id":False})
         return previous_info[param]
 
+def check_events(usr, event_id):
+    user = search_username(usr)
+    flag =0
+    event_info = db.collection.events.find_one({'_id': ObjectId(event_id)})
+    if(user == "USER_NOT_FOUND"):
+        return "USER_NOT_FOUND"
+    else:
+        previous_info = db.collection.users.find_one({"name":user['name']}, {"_id":False})
+        for user_event in previous_info['events']:
+                if user_event['name'] == event_info['name']:
+                    flag =1
+    if flag ==0:
+        return "NOT_REGISTERED"
+    else:
+        return "REGISTERED"
+
+
 def get_various_parameters(user, parameters):
     user = search_username(user)
     if(user == "USER_NOT_FOUND"):
@@ -252,7 +269,7 @@ def add_event(user, event_id):
                 db.collection.users.update({"name":user_info['name']},{"$set":{"events":already_added_events}})
                 registered = event_info['num_registered'] +1
                 db.collection.events.update({"_id":ObjectId(event_id)}, {"$set":{"num_registered":registered}})
-                return "EVENT ADDED"
+                return "EVENT_ADDED"
         return "EVENT_FULL"
 
 def get_org_event(user,stat):
