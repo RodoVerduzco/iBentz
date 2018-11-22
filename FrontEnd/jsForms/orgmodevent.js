@@ -216,12 +216,9 @@ jQuery(document).ready(function($) {
      // if(response["users"] === "user inserted successfully"){
      //     console.log("Good");
      //     // Success message
-     //     // alert("Plox");
-     //
-     //
-     //    // Here you should stablish your ID session.
-     //    // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
-     //
+     $("#sendmessage").addClass("show");
+     $("#errormessage").removeClass("show");
+     $('.contactForm').find("input, textarea").val("");
      //    // Redirect to User Interface...
      //    window.location.replace("userprofile.html?userload="+f_username);
      // }else {

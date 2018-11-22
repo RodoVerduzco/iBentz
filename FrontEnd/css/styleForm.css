@@ -1660,8 +1660,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 .span4 img {
     margin-right: 10px;
 }
-.span4 .img-left {
+.img-left {
     float: left;
+    padding:10px;
 }
 .span4 .img-right {
     float: right;
