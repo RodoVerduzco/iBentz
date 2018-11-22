@@ -146,7 +146,7 @@ jQuery(document).ready(function($) {
          }else if(response["users"]["user_type"]==="ORG"){
              console.log("You are a ORG");
              // alert(response["users"]["user_type"]);
-             window.location.replace("./orginsevent.html?userload="+f_username);
+             window.location.replace("./orginterface.html?userload="+f_username);
          }else{
               console.log("What are you?");
          }

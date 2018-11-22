@@ -1,6 +1,6 @@
 
- var url = "http://localhost:5000/api/v1/users/search_users?type=INSERT_USER";
-//var url = "http://172.20.10.2:5000/api/v1/users/search_users";
+
+var url = "http://172.20.10.2:5000/api/v1/users/search_users";
 
 const urlParams = new URLSearchParams(window.location.search);
 const f_username = urlParams.get('userload');
@@ -169,7 +169,7 @@ jQuery(document).ready(function($) {
     var f_sex = $('input[name=radiosex]:checked').val();
     var f_birthday = $("#birthday").val();
     var f_location = $("#location").val();
-    var f_preferences = $("#preferences").val();
+    // var f_preferences = $("#preferences").val();
 
     var data_to_send = {
         "type" : "MODIFY_USER",
@@ -205,7 +205,7 @@ jQuery(document).ready(function($) {
      if(response["users"] === "UPDATED"){
          console.log("Good");
          // Success message
-         // alert("Plox");
+         // // alert("Plox");
          $("#sendmessage").addClass("show");
          $("#errormessage").removeClass("show");
          $('.contactForm').find("input, textarea").val("");

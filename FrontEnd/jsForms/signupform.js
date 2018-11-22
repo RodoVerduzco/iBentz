@@ -1,5 +1,5 @@
 
-// var url = "http://localhost:5000/api/v1/users/search_users?type=INSERT_USER";
+
 var url = "http://172.20.10.2:5000/api/v1/users/search_users";
 
 jQuery(document).ready(function($) {
@@ -121,7 +121,6 @@ jQuery(document).ready(function($) {
     var f_sex = $('input[name=radiosex]:checked').val();
     var f_birthday = $("#birthday").val();
     var f_location = $("#location").val();
-    var f_preferences = $("#preferences").val();
 
     var data_to_send = {
         "type" : "INSERT_USER",
@@ -157,7 +156,7 @@ jQuery(document).ready(function($) {
      if(response["users"] === "user inserted successfully"){
          console.log("Good");
          // Success message
-         alert("Plox");
+         // alert("Plox");
          $("#sendmessage").addClass("show");
          $("#errormessage").removeClass("show");
          $('.contactForm').find("input, textarea").val("");
@@ -167,11 +166,11 @@ jQuery(document).ready(function($) {
 
 
         // Redirect to User Interface...
-        window.location.replace("userprofile.html?userload="+f_username);
+        window.location.replace("userinterface.html?userload="+f_username);
      }else {
          // You shouldn't get here...
         console.log("No estas registrado");
-        alert("ploxsignup");
+        // alert("ploxsignup");
         // Error Message
         // $("#sendmessage").removeClass("show");
         // $("#errormessage").addClass("show");

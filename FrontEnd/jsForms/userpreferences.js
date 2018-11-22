@@ -1,5 +1,5 @@
 
-// var url = "http://localhost:5000/api/v1/users/search_users?type=INSERT_USER";
+
 var url = "http://172.20.10.2:5000/api/v1/users/search_users";
 
 const urlParams = new URLSearchParams(window.location.search);

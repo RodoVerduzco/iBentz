@@ -6,7 +6,7 @@ var url = IP+USERS_ENDPOINT;
 var url2 = IP+EVENTS_ENDPOINT;
 
 const urlParams = new URLSearchParams(window.location.search);
-const f_username = urlParams.get('userload');
+const username = urlParams.get('userload');
 
 $( document ).ready(function() {
     loadMyEvents();
@@ -16,7 +16,7 @@ $( document ).ready(function() {
 function loadMyEvents(){
     var data_to_send = {
         "type" : "GET_PARAMETER",
-        "username": f_username,
+        "username": username,
         "param": "events"
     }
     var settings = {
@@ -34,14 +34,17 @@ function loadMyEvents(){
 
     $.ajax(settings).done(function (response) {
       console.log(response);
-      if(0 >= response.users.length){
+      if(response.users.length > 0){
           response.users.forEach(function(element) {
-            var img = $('<img />').attr({
-                  'id': 'myImage'+element.name,
-                  'src': '../FrontEnd/img/gallery/' + element.image,
-                  'width': "200px",
-                  'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
-              }).appendTo('#myEvents');
+              var img = $('<img />').attr({
+                    'id': 'myImage'+element.name,
+                    'src': '../FrontEnd/img/gallery/' + element.image,
+                    'width': "200px",
+                    'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
+                });
+                var link = $('<a />').attr({
+                  'href': "./event.html?event_id="+element.id+"&usr="+username
+              }).prepend(img).appendTo('#myEvents');
           });
 
           // Gallery carousel (uses the Owl Carousel library)
@@ -54,10 +57,12 @@ function loadMyEvents(){
             }
           });
       }else{
-          $( "#myEvents" ).removeClass( "owl-carousel gallery-carousel" );
-          // $("#myEvents").children('.owl-stage-outer').remove();
+          $("#myEvents").removeClass( "owl-carousel gallery-carousel" );
+          $("#myEvents").children('.owl-stage-outer').remove();
+          $("#myEvents").children('.owl-nav').remove();
+
           $( "#gallery" ).removeClass( "wow fadeInUp" );
-          $( "<p>You have not registered to an event D:</p>" ).appendTo('#myEvents');
+          $( "<p class='text-center'>You have not registered to an event D:</p>" ).appendTo('#myEvents');
       }
     });
 }
@@ -65,7 +70,7 @@ function loadMyEvents(){
 function loadMyRecommendedEvents(){
     var data_to_send = {
         "type" : "GET_USER_RECOMMENDATIONS",
-        "username": f_username
+        "username": username
     }
     var settings = {
       "async": true,
@@ -82,14 +87,17 @@ function loadMyRecommendedEvents(){
 
     $.ajax(settings).done(function (response) {
       console.log(response);
-      if(0 <= response.users.length){
+      if(response.users.length > 0){
           response.users.forEach(function(element) {
-            var img = $('<img />').attr({
-                  'id': 'myImage'+element.name,
-                  'src': '../FrontEnd/img/gallery/' + element.image,
-                  'width': "200px",
-                  'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
-              }).appendTo('#myRecommendedEvents');
+              var img = $('<img />').attr({
+                    'id': 'myImage'+element.name,
+                    'src': '../FrontEnd/img/gallery/' + element.image,
+                    'width': "200px",
+                    'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
+                });
+                var link = $('<a />').attr({
+                  'href': "./event.html?event_id="+element.id+"&usr="+username
+                }).prepend(img).appendTo('#myRecommendedEvents');
           });
 
           // Gallery carousel (uses the Owl Carousel library)
@@ -102,17 +110,20 @@ function loadMyRecommendedEvents(){
             }
           });
       }else{
-          $( "#myRecommendedEvents" ).removeClass( "owl-carousel gallery-carousel" );
+          $("#myRecommendedEvents").removeClass( "owl-carousel gallery-carousel" );
+          $("#myRecommendedEvents").children('.owl-stage-outer').remove();
+          $("#myRecommendedEvents").children('.owl-nav').remove();
+
           $( "#gallery2" ).removeClass( "wow fadeInUp" );
-          $( "<p class='text-center'>You have not registered to an event D:</p>" ).appendTo('#myRecommendedEvents');
+          $( "<p class='text-center'>There is no events with your preferences D:</p>" ).appendTo('#myRecommendedEvents');
       }
     });
 }
 
 function goToMyProfile(){
-     window.location.href = './userprofile.html?userload='+f_username+'';
+     window.location.href = './userprofile.html?userload='+username+'';
 }
 
 function goToMyPreferences(){
-     window.location.href = './userpreferences.html?userload='+f_username+'';
+     window.location.href = './userpreferences.html?userload='+username+'';
 }

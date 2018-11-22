@@ -171,7 +171,7 @@ function generate_carousel(){
     if(usr == null)
       username = "visit_0123";
     response.events.forEach(function(element) {
-      
+
       var img = $('<img />').attr({
             'id': 'myImage'+element.name,
             'src': '../FrontEnd/img/gallery/' + element.image,

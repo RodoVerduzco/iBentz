@@ -1,5 +1,5 @@
 
-// var url = "http://localhost:5000/api/v1/users/search_users?type=INSERT_USER";
+
 const IP = "http://172.20.10.2:5000";
 const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 var url = IP+EVENTS_ENDPOINT;
