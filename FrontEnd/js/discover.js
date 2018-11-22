@@ -2,7 +2,7 @@ function llamada(id){
  
   var user="user";
   var queryString = "?id=" + id + "&user=" + user;
-   window.location.href = "../FrontEnd/dummy.html"+queryString;
+   window.location.href = "../FrontEnd/event.html"+queryString;
 }
 
 
@@ -59,8 +59,8 @@ function filter(){
 
 
 
-    var empieza = "<div class=\"col-lg-4 col-md-6\" style=\"padding:30px\"><div class=\"speaker\"><a href=\"javascript:llamada('";
-     var empieza0 ="');\"><img src='img/gallery/";
+    var empieza = "<div class=\"col-lg-3 col-md-6\" align=\"center\"><div class=\"speaker\"><a href=\"javascript:llamada('";
+     var empieza0 ="');\"><img style=\"width: 50%; height: 50%\" src='img/gallery/";
       var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
       var empieza3 = "</br><b>Fecha: </b>" 
@@ -123,8 +123,8 @@ jQuery(document).ready(function($) {
         "data": JSON.stringify(data_to_send)
     }
   }
-     var empieza = "<div class=\"col-lg-4 col-md-6\" style=\"padding:30px\"><div class=\"speaker\"><a href=\"javascript:llamada('";
-     var empieza0 ="');\"><img src='img/gallery/";
+     var empieza = "<div class=\"col-lg-3 col-md-6\" align=\"center\"><div class=\"speaker\"><a href=\"javascript:llamada('";
+     var empieza0 ="');\"><img style=\"width: 50%; height: 50%\" src='img/gallery/";
       var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
       var empieza3 = "</br><b>Fecha: </b>" 
@@ -134,7 +134,8 @@ jQuery(document).ready(function($) {
       console.log(response);
         $('#resultados').empty();
         $.each(response.events, function(idx, value){      
-          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+ 
+        //alert();
+          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + (response['events'][idx]['name']).substring(0, 14)+"..."+empieza2 +response['events'][idx]['event_location']+ 
             empieza3+response['events'][idx]['event_date']+empieza4);
 
         });
