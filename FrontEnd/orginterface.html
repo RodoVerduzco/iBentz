@@ -58,7 +58,7 @@
 					<li><a href="index.html#gallery">Popular</a></li>
 					<li><a href="index.html#contact">Contacto</a></li>
 					<li class="buy-tickets"><a href="signup.html">Sign Up</a></li>
-					<li class="buy-tickets"><a href="login.html">Login</a></li>
+					<li class="buy-tickets"><a href="login.html">Log In</a></li>
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->
@@ -77,56 +77,50 @@
 
 		<div class="container">
 			<div class="section-header">
-				<h2>User Interface</h2>
+				<h2>organizer EVENTS</h2>
 				<!-- <p>Please insteed.</p> -->
 			</div>
-			<div class="text-center">
-				<button type="button" class="myButton" onclick="location.href='./userprofile.html'">My Profile</button>
-				<button type="button" class="myButton" onclick="location.href='./userpreferences.html'">Event Preferences</button>
-			</div>
-			<br>
-			<br>
-			<div class="form">
-				<div id="sendmessage">Your message has been sent. Thank you!</div>
-				<div id="errormessage"></div>
-				<form action="" method="post" role="form" class="profileForm">
-					<div class="form-group text-center">
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck1" name="mypreferences" value="MUSICA">
-							<label class="custom-control-label" for="customCheck1">MUSICA</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck2" name="mypreferences" value="ARTE">
-							<label class="custom-control-label" for="customCheck2">ARTE</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck3" name="mypreferences" value="CINE">
-							<label class="custom-control-label" for="customCheck3">CINE</label>
-						</div>
-					</div>
-					<div class="form-group text-center">
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck4" name="mypreferences" value="LITERATURA">
-							<label class="custom-control-label" for="customCheck4">LITERATURA</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck5" name="mypreferences" value="TEATRO">
-							<label class="custom-control-label" for="customCheck5">TEATRO</label>
-						</div>
-						<div class="custom-control custom-checkbox custom-control-inline">
-							<input type="checkbox" class="custom-control-input" id="customCheck6" name="mypreferences" value="DEPORTE">
-							<label class="custom-control-label" for="customCheck6">DEPORTE</label>
-						</div>
-					</div>
-					<br>
-					<div class="text-center"><button type="button" class="backLink">BACK</button><button type="submit">MODIFY</button></div>
-				</form>
-			</div>
+
+			<div class="container-fluid">
+	            <div class="row">
+	                <div class="col">
+
+	                    <!--TABS PARA EL MENU DE MÉDICO-->
+	                    <ul class="nav nav-tabs justify-content-center" id="myNavEvents" role="tablist">
+	                        <li class="nav-item">
+	                            <a class="nav-link active" id="eventsActive-tab" data-toggle="tab" href="#eventsActive" onclick="loadActiveUsers()" role="tab" aria-controls="eventsActive" aria-selected="true">Active Events</a>
+	                        </li>
+	                        <li class="nav-item">
+	                            <a class="nav-link" id="eventsInactive-tab" data-toggle="tab" href="#eventsInactive" onclick="loadInactiveUsers()" role="tab" aria-controls="eventsInactive" aria-selected="false">Inactive Events</a>
+	                        </li>
+	                    </ul>
+
+	                    <!--CONTENIDO DE LOS TABS-->
+	                    <div class="tab-content" id="myTabContent">
+	                        <!--TAB EVENTOS ACTIVOS-->
+	                        <div class="tab-pane fade show active" id="eventsActive" role="tabpanel" aria-labelledby="eventsActive-tab">
+	                            <div class="row">
+	                                <div id="eventsActiveLista">
+										<!-- Set my js content here... -->
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <!--TAB EVENTOS INACTIVOS-->
+	                        <div class="tab-pane fade" id="eventsInactive" role="tabpanel" aria-labelledby="eventsInactive-tab">
+	                            <div class="row">
+	                                <div id="eventsInactiveLista">
+										<!-- Set my js content here... -->
+	                                </div>
+	                            </div>
+	                        </div>
+
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+
 		</div>
 	</section>
-	<!-- #contact -->
-	<!-- #Login Form  -->
-
 
 	<!--==========================
     Footer
@@ -217,7 +211,7 @@
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
 	<!-- Contact Form JavaScript File -->
-	<script src="jsForms/userpreferences.js"></script>
+	<script src="jsForms/orginterface.js"></script>
 
 	<!-- Template Main Javascript File -->
 	<script src="js/login.js"></script>

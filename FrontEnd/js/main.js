@@ -2,6 +2,11 @@ const IP = "http://172.20.10.2:5000";
 const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 
 jQuery(document).ready(function( $ ) {
+    // Back to previous page
+    $('.backLink').click(function(){
+           parent.history.back();
+           return false;
+       });
 
   // Back to top button
   $(window).scroll(function() {
