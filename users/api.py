@@ -125,6 +125,7 @@ class UsersAPI(MethodView):
             sex = data.get('sex')
             birthday = data.get('birthday')
             location = data.get('location')
+
             if usr and email and password and age and first_name and last_name and sex and birthday and location:
                 response = "MISSING_DATA"
             
@@ -150,6 +151,14 @@ class UsersAPI(MethodView):
                 response = "MISSING_DATA"
             
             response = USERS.get_user_recommendations(usr)
+
+        elif testing_param == "CHECK_IF_REGISTERED":
+            usr = data.get('username')
+            event_id = data.get('event_id')
+            if usr and event_id:
+                response = USERS.check_events(usr,event_id)
+            else:
+                response = "MISSING DATA"
 
         elif testing_param == "INSERT_USER":
             username = data.get('username')

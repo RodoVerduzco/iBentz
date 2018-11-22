@@ -61,17 +61,17 @@
       <div id="logo" class="pull-left">
         <!-- Uncomment below if you prefer to use a text logo -->
         <!-- <h1><a href="#main">C<span>o</span>nf</a></h1>-->
-        <a href="index.html#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
+        <a href="./index.html#intro" class="scrollto"><img src="img/logo.png" alt="" title=""></a>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Inicio</a></li>
-          <li><a href="#speakers">Eventos</a></li>
-          <li><a href="#gallery">Popular</a></li>
-          <li><a href="#contact">Contacto</a></li>
-          <li class="buy-tickets"><a href="#login">Log In</a></li>
-          <li class="buy-tickets"><a href="#signup">Sign Up</a></li>
+          <li><a href="./index.html#speakers">Eventos</a></li>
+          <li><a href="./index.html#gallery">Popular</a></li>
+          <li><a href="./index.html#contact">Contacto</a></li>
+          <li class="buy-tickets"><a href="./index.html#login">Log In</a></li>
+          <li class="buy-tickets"><a href="./index.html#signup">Sign Up</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -90,68 +90,40 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4 mt-0" style="background-color:gray;">
 
-            <img id=img1 alt="hola" class="img-fluid" width="200" height="220">
+            <img id=img1 alt="hola" class="img-fluid" >
 
               </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="details">
-                <h2>Lugar</h2>
-                <p id=location></p>
-                <h2>Fecha</h2>
-                <p id=date></p>
-                <h2>Más Información</h2>
-                <p id=info></p>
+                <h2>Location</h2>
+                <p id="location"></p>
+                <h2>Date</h2>
+                <p id="date"></p>
+                <h2>More Info</h2>
+                <p id="info"></p>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="details">
+                  <h2>Descripción</h2>
+                  <p id="description"></p>
+                <h2>Event Status</h2>
+                <p id="status"></p>
+                <h2>Seats Taken</h2>
+                <div id="num_registered" class="d-inline"></div>/<div id="max_reg" class="d-inline"></div>
+                <div class="row">
+                <ul class="nav-menu">
+                    <li class="buy-tickets"><button  id="addEvent" onclick="register_event();">REGISTER</button></li>
+                    </ul>
+                    </div>
+                    </div>
               </div>
           </div>
         </div>
 
-            <div class="row">
-              <div class="details">
-              <h2>Descripción</h2>
-              <p id=description></p>
-            </div></div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="details">
-              <h2>Status del Evento</h2>
-              <p id=status></p></div></div>
-              <div class="col-md-0">
-              </div>
-              <div class="col-md-6">
-              <div class="details">
-              <h2>Usuarios Registrados</h2>
-              <p id=num_registered></p>
-            </div></div></div>
-
-            <div class="row">
-              <div class="col-md-4">
-              </div>
-              <div class="col-md-4">
-              <ul class="nav-menu">
-              <li class="buy-tickets"><a  id="addEvent" onclick="register_event();">REGISTRARME</a></li>
-              </ul>
-              </div>
-              <div class="col-md-4">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-5">
-              </div>
-              <div class="col-sm-4">
-              <div class="social">
-                <a href=""><i class="fa fa-twitter"></i></a>
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-google-plus"></i></a>
-
-              </div>
-            </div>
-            <div class="col-sm-6">
-            </div>
-
-          </div>
+            
 
         </div>
 
