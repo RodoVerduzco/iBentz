@@ -160,8 +160,10 @@ function deleteEvent(idEvent){
         loadActiveUsers();
         loadInactiveUsers();
     });
+}
 
-
+function createEvent(){
+     window.location.href = './orginsevent.html?userload='+f_username+'';
 }
 
 function deleteChildsElement(nombre){
