@@ -30,7 +30,7 @@ function filter(){
       var data_to_send = {
           "type" : "READ",
           "event_location" : location,
-          "event_type": categoria
+          "category": categoria
         };
     }
     else{
@@ -45,7 +45,7 @@ function filter(){
         //filtrado por categoría
         var data_to_send = {
           "type" : "READ",
-          "event_type" : categoria
+          "category" : categoria
         };
 
       }

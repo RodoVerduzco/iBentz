@@ -217,9 +217,11 @@ def get_parameter(user, param):
         return "USER_NOT_FOUND"
     else:
         previous_info = db.collection.users.find_one({"name":user['name']}, {"_id":False})
+
         if param == "events_vic":
             res = []
             for evry in previous_info['events']:
+                print(evry)
                 element = db.collection.events.find_one({"name":evry['name']})
                 res.append({
                     "id" : str(element.get('_id')),
@@ -300,7 +302,9 @@ def get_org_event(user,stat):
     if user_info == "USER_NOT_FOUND":
         return "USER_NOT_FOUND"
     else:
-        events = db.collection.events.find({"$and":[{'organizer': user}, {"status":stat}]})
+        inf= db.collection.users.find_one({"$or":[{"name": user},{"email":user}]}, {'_id':False})
+        print(inf['name'])
+        events = db.collection.events.find({"$and":[{'organizer': inf['name']}, {"status":stat}]})
         if events is None:
             return "NO_EVENTS_FOUND"
         
@@ -416,7 +420,8 @@ def send_mails():
                     server.starttls()
                     server.login(gmail_user, gmail_pwd)
                     msg = MIMEMultipart('alternative')
-                    recipient = "gabo-fly@hotmail.com"
+                    recipient = user['email']
+                    print(recipient)
                     msg['Subject'] = "iBentz- Your event "+event['name']+" is coming up!"
                     msg['From'] = gmail_user
                     msg['To'] = recipient

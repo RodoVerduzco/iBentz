@@ -12,6 +12,7 @@ CLIENT = MongoClient(config.DB_URI,
                      socketKeepAlive=True)
 DATABASE = CLIENT.get_default_database()
 collection = DATABASE.events
+coll_users = DATABASE.users
 
 
 def insert_event(name, image, date, max_part, location, description,
@@ -34,6 +35,7 @@ def insert_event(name, image, date, max_part, location, description,
     Returns:
         string: Confirmation Message
     """
+    
     collection.insert({
         "name": name,
         "image": image,
@@ -113,8 +115,23 @@ def search_id(event_id):
 
 def modify_event(event_id, name, date, location, image, max_part, description, info, category):
     #db.collection.users.update({"name":user_info['name']},{"$set":{"events":my_events}})
+    event_info = collection.find_one({"_id": ObjectId(event_id)})
     collection.update_one({"_id": ObjectId(event_id)}, {"$set":{"name":name, "date":date, "location":location,\
     "category":category, "info":info, "image":image, "max_participants":max_part, "description":description}})
+
+    retrieved_info = list(coll_users.find())
+    for element in retrieved_info:
+        change_eve =[]
+        for event in element['events']:
+            print(event)
+            print(event_info['name'])
+            if str(event_info['name']) == str(event['name']):
+                event['name'] = name
+                event['date'] =date
+
+            change_eve.append(event)
+        coll_users.update_one({"email": element['email']}, {"$set":{"events":change_eve}})  
+
 
     return "UPDATED_EVENT"
 
