@@ -1,4 +1,4 @@
-//const IP2 = "http://172.20.10.2:5000";
+//const IP2 = "http://0.0.0.0:5000";
 // const IP2 = "http://0.0.0.0:5000";
 // const EVENTS_ENDPOINT2 = "/api/v1/events/search_events";
  var id=getParameterByName('event_id');

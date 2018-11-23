@@ -1,6 +1,6 @@
 
 //var url = "http://localhost:5000/api/v1/users/search_users?type=VALIDATE_USER";
-//var url = "http://172.20.10.2:5000/api/v1/users/search_users";
+//var url = "http://0.0.0.0:5000/api/v1/users/search_users";
 
 jQuery(document).ready(function($) {
   "use strict";
@@ -126,7 +126,7 @@ jQuery(document).ready(function($) {
          $("#sendmessage").removeClass("show");
          $("#errormessage").addClass("show");
          $('#errormessage').html("Usuario no registrado o password incorrecto.");
-          alert(response);
+          // alert(response);
      }else {
          console.log("Good");
          console.log(response["users"]["user_type"]);
