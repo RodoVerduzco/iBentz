@@ -57,7 +57,7 @@ function createOrg(){
     "username":$("#org_name").val(),
     "password":$("#org_password").val(),
     "sex":"C"
-  }
+  };
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -70,11 +70,11 @@ function createOrg(){
     },
     "processData": false,
     "data": JSON.stringify(data_to_send)
-  }
-  
+  };
+
   $.ajax(settings).done(function (response) {
     console.log(response);
-    if(response['users'] == "user inserted successfully"){
+    if(response.users == "user inserted successfully"){
       alert("ORG created successfully");
     }
     else {

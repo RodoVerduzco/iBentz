@@ -89,32 +89,32 @@ def search_name(name):
         return "NOT_FOUND"
     return get_important_info(retrieved_info)
 
-def search_id( event_id):
-        element = collection.find_one({'_id': ObjectId(event_id)})
-        
-        if element is None:
-            return "EVENT_NOT_FOUND"
-        result ={
-            "id" : str(element.get('_id')),
-            "name": element["name"],
-            "event_date": element["date"],
-            "event_type": element["category"],
-            "event_location": element["location"],
-            "image":element['image'],
-            "max_participants": element['max_participants'],
-            "description": element['description'],
-            "ext_info": element['ext_info'],
-            "category": element['category'],
-            "status": element['status'],
-            "num_registered": element['num_registered'],
-            "organizer": element['organizer']
-        }
-        return result
+def search_id(event_id):
+    element = collection.find_one({'_id': ObjectId(event_id)})
 
-def modify_event(event_id,name, date, location, image, max_part, description, info, category):
+    if element is None:
+        return "EVENT_NOT_FOUND"
+    result = {
+        "id" : str(element.get('_id')),
+        "name": element["name"],
+        "event_date": element["date"],
+        "event_type": element["category"],
+        "event_location": element["location"],
+        "image":element['image'],
+        "max_participants": element['max_participants'],
+        "description": element['description'],
+        "ext_info": element['ext_info'],
+        "category": element['category'],
+        "status": element['status'],
+        "num_registered": element['num_registered'],
+        "organizer": element['organizer']
+    }
+    return result
+
+def modify_event(event_id, name, date, location, image, max_part, description, info, category):
     #db.collection.users.update({"name":user_info['name']},{"$set":{"events":my_events}})
-    collection.update_one({"_id": ObjectId(event_id)}, {"$set":{"name":name,"date":date,"location":location,\
-    "category":category,"info":info,"image":image, "max_participants":max_part,"description":description}})
+    collection.update_one({"_id": ObjectId(event_id)}, {"$set":{"name":name, "date":date, "location":location,\
+    "category":category, "info":info, "image":image, "max_participants":max_part, "description":description}})
 
     return "UPDATED_EVENT"
 
@@ -185,7 +185,7 @@ def search_with_various(event_type, location, name):
     Returns:
         list: List of events
     """
-    result = collection.find({"$and":[{"category": event_type},{"location":location},{"name":name}, {"status":"ACTIVE"} ]})
+    result = collection.find({"$and":[{"category": event_type}, {"location":location}, {"name":name}, {"status":"ACTIVE"}]})
     return get_important_info(result)
 
 def search_location_type(event_type, location):
@@ -195,7 +195,7 @@ def search_location_type(event_type, location):
     Returns:
         list: List of events
     """
-    result = collection.find({"$and":[{"category": event_type},{"location":location}, {"status":"ACTIVE"} ]})
+    result = collection.find({"$and":[{"category": event_type}, {"location":location}, {"status":"ACTIVE"}]})
     return get_important_info(result)
 
 def search_location_name(location, name):
@@ -205,7 +205,7 @@ def search_location_name(location, name):
     Returns:
         list: List of events
     """
-    result = collection.find({"$and":[{"name": name},{"location":location}, {"status":"ACTIVE"} ]})
+    result = collection.find({"$and":[{"name": name}, {"location":location}, {"status":"ACTIVE"}]})
     return get_important_info(result)
 
 def get_important_info(retrieved_info):

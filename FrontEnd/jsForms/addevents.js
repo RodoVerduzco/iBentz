@@ -93,7 +93,4 @@ jQuery(document).ready(function($) {
      });
 
   });
-
-
-
 });
