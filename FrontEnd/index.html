@@ -118,65 +118,75 @@
             <h2>Descubrir Eventos</h2>
             <p>Encuentra tu evento</p>
         </div>
-    	<div>
-    		<input type="text" placeholder="Buscar..." name="search" id="search">
-    		<button type="submit" id="background_process_test" onclick="search();"><i class="fa fa-search"></i></button>
-      	</div>
-      	<div>
-  			<select id="loc">
-  				<option selected disabled hidden >Estado</option>
-  				<option value="0">Todos los estados</option>
-  		    	<option value="AGS">Aguascalientes</option>
-  		  		<option value="BCN">Baja Calfornia</option>
-  		  		<option value="BCS">Baja California Sur</option>
-  		  		<option value="CAM">Campeche</option>
-  		  		<option value="CHP">Chiapas</option>
-  		  		<option value="CHI">Chihuahua</option>
-  		  		<option value="DIF">Ciudad de México</option>
-  		  		<option value="COA">Coahuila</option>
-  		  		<option value="COL">Colima</option>
-  		  		<option value="DUR">Durango</option>
-  		  		<option value="GTO">Guanajuato</option>
-  		  		<option value="GRO">Guerrero</option>
-  		  		<option value="HGO">Hidalgo</option>
-  		  		<option value="JAL">Jalisco</option>
-  		  		<option value="MEX">México</option>
-  		  		<option value="MIC">Michoacán</option>
-  		  		<option value="MOR">Morelos</option>
-  		  		<option value="NAY">Nayarit</option>
-  		  		<option value="NLE">Nuevo León</option>
-  		  		<option value="OAX">Oaxaca</option>
-  		  		<option value="PUE">Puebla</option>
-  		  		<option value="QRO">Querétaro</option>
-  		  		<option value="ROO">Quintana Roo</option>
-  		  		<option value="SLP">San Luis Potosí</option>
-  		  		<option value="SIN">Sinaloa</option>
-  		  		<option value="SON">Sonora</option>
-  		  		<option value="TAB">Tabasco</option>
-  			  	<option value="TAM">Tamaulipas</option>
-  			  	<option value="TLX">Tlaxcala</option>
-  		  		<option value="VER">Veracruz</option>
-	  		  	<option value="YUC">Yucatán</option>
-  			  	<option value="ZAC">Zacatecas</option>
-  			</select>
+        <div class="row justify-content-md-center">
+    	<div class="col-s-5">
+    		<input class="form-control" type="text" placeholder="Buscar..." name="search" id="search">
+      </div>
+      <div class="col-s-2">
+        <button type="submit" id="background_process_test"  class="btn btn-info" onclick="search();"><i class="fa fa-search"></i></button>
+      </div>
+      </div>
+      </br>
+      	<div class="row justify-content-md-center">
+        <div class="col-s-5">
+          <select id="loc" class="custom-select">
+            <option selected disabled hidden >Estado</option>
+            <option value="0">Todos los estados</option>
+            <option value="AGS">Aguascalientes</option>
+            <option value="BCN">Baja Calfornia</option>
+            <option value="BCS">Baja California Sur</option>
+            <option value="CAM">Campeche</option>
+            <option value="CHP">Chiapas</option>
+            <option value="CHI">Chihuahua</option>
+            <option value="DIF">Ciudad de México</option>
+            <option value="COA">Coahuila</option>
+            <option value="COL">Colima</option>
+            <option value="DUR">Durango</option>
+            <option value="GTO">Guanajuato</option>
+            <option value="GRO">Guerrero</option>
+            <option value="HGO">Hidalgo</option>
+            <option value="JAL">Jalisco</option>
+            <option value="MEX">México</option>
+            <option value="MIC">Michoacán</option>
+            <option value="MOR">Morelos</option>
+            <option value="NAY">Nayarit</option>
+            <option value="NLE">Nuevo León</option>
+            <option value="OAX">Oaxaca</option>
+            <option value="PUE">Puebla</option>
+            <option value="QRO">Querétaro</option>
+            <option value="ROO">Quintana Roo</option>
+            <option value="SLP">San Luis Potosí</option>
+            <option value="SIN">Sinaloa</option>
+            <option value="SON">Sonora</option>
+            <option value="TAB">Tabasco</option>
+            <option value="TAM">Tamaulipas</option>
+            <option value="TLX">Tlaxcala</option>
+            <option value="VER">Veracruz</option>
+            <option value="YUC">Yucatán</option>
+            <option value="ZAC">Zacatecas</option>
+          </select>
+        </div>
   			&nbsp;
   			&nbsp;
   			&nbsp;
-	  		<select id='cat'>
-  				<option  selected disabled hidden >Categoría</option>
-      			<option value="">Todas las categorías</option>
-  				<option value="MUSICA">Música</option>
-  				<option value="DEPORTE">Deporte</option>
-	  			<option value="ARTE">Arte</option>
-  				<option value="CINE">Cine</option>
-  				<option value="LITERATURA">Literatura</option>
-  				<option value="TEATRO">Teatro</option>
-  			</select>
+        <div class="col-s-5">
+          <select id='cat' class="custom-select">
+            <option  selected disabled hidden >Categoría</option>
+            <option value="">Todas las categorías</option>
+            <option value="MUSICA">Música</option>
+            <option value="DEPORTE">Deporte</option>
+            <option value="ARTE">Arte</option>
+            <option value="CINE">Cine</option>
+            <option value="LITERATURA">Literatura</option>
+            <option value="TEATRO">Teatro</option>
+          </select>
+        </div>
   			&nbsp;
   			&nbsp;
   			&nbsp;
   			&nbsp;
-		    <button type="submit" id="Filtro" onclick="filter();">Aplicar Filtro</button>
+		    <button type="submit" class="btn btn-info" id="Filtro" onclick="filter();">Aplicar Filtro</button>
+      </div>
 		</div>
 	</div>
 	<br>
