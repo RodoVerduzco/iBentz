@@ -17,7 +17,7 @@ function loadMyEvents(){
     var data_to_send = {
         "type" : "GET_PARAMETER",
         "username": username,
-        "param": "events"
+        "param": "events_vic"
     }
     var settings = {
       "async": true,
@@ -33,30 +33,30 @@ function loadMyEvents(){
     };
 
     $.ajax(settings).done(function (response) {
-      console.log(response);
-      if(response.users.length > 0){
-          response.users.forEach(function(element) {
-              var img = $('<img />').attr({
-                    'id': 'myImage'+element.name,
-                    'src': '../FrontEnd/img/gallery/' + element.image,
-                    'width': "200px",
-                    'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
-                });
-                var link = $('<a />').attr({
-                  'href': "./event.html?event_id="+element.id+"&usr="+username
-              }).prepend(img).appendTo('#myEvents');
-          });
+        console.log(response);
+        if(response.users.user.length > 0){
+            response.users.user.forEach(function(element) {
+                var img = $('<img />').attr({
+                      'id': 'myImage'+element.name,
+                      'src': '../FrontEnd/img/gallery/' + element.image,
+                      'width': "200px",
+                      'title': "Name: " + element.name + "\nPlace: " + element.event_location + "\nDate: " + element.event_date
+                  });
+                  var link = $('<a />').attr({
+                    'href': "./event.html?event_id="+element.id+"&usr="+username
+                }).prepend(img).appendTo('#myEvents');
+            });
 
-          // Gallery carousel (uses the Owl Carousel library)
-          $(".gallery-carousel").owlCarousel({
-            autoplay: true,
-            dots: true,
-            loop: true,
-            center:true,
-            responsive: { 0: { items: 1 }, 768: { items: 3 }, 992: { items: 4 }, 1200: {items: 5}
-            }
-          });
-      }else{
+            // Gallery carousel (uses the Owl Carousel library)
+            $(".gallery-carousel").owlCarousel({
+              autoplay: true,
+              dots: true,
+              loop: true,
+              center:true,
+              responsive: { 0: { items: 1 }, 768: { items: 3 }, 992: { items: 4 }, 1200: {items: 5}
+              }
+            });
+        }else{
           $("#myEvents").removeClass( "owl-carousel gallery-carousel" );
           $("#myEvents").children('.owl-stage-outer').remove();
           $("#myEvents").children('.owl-nav').remove();
