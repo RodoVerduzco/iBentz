@@ -53,9 +53,10 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Inicio</a></li>
-          <li><a href="#speakers">Eventos</a></li>
+          
 
           <li><a href="#gallery">Popular</a></li>
+          <li><a href="#descubrir">Eventos</a></li>
           <li><a href="#contact">Contacto</a></li>
           <li class="buy-tickets"><a href="./signup.html">Sign Up</a></li>
           <li class="buy-tickets"><a href="./login.html">Log In</a></li>
@@ -114,305 +115,83 @@
         <div id="events-carousel" class="owl-carousel gallery-carousel"></div>
 
     </section>
+<!------------EMPIEZA-------->
+<section id="descubrir">
+	<div class="container">
+		<div class="section-header">
+            <h2>Descubrir Eventos</h2>
+            <p>Encuentra tu evento</p>
+        </div>
+    	<div>
+    		<input type="text" placeholder="Buscar..." name="search" id="search">
+    		<button type="submit" id="background_process_test" onclick="search();"><i class="fa fa-search"></i></button>
+      	</div>
+      	<div>
+  			<select id="loc">
+  				<option selected disabled hidden >Estado</option>
+  				<option value="0">Todos los estados</option>
+  		    	<option value="AGS">Aguascalientes</option>
+  		  		<option value="BCN">Baja Calfornia</option>
+  		  		<option value="BCS">Baja California Sur</option>
+  		  		<option value="CAM">Campeche</option>
+  		  		<option value="CHP">Chiapas</option>
+  		  		<option value="CHI">Chihuahua</option>
+  		  		<option value="DIF">Ciudad de México</option>
+  		  		<option value="COA">Coahuila</option>
+  		  		<option value="COL">Colima</option>
+  		  		<option value="DUR">Durango</option>
+  		  		<option value="GTO">Guanajuato</option>
+  		  		<option value="GRO">Guerrero</option>
+  		  		<option value="HGO">Hidalgo</option>
+  		  		<option value="JAL">Jalisco</option>
+  		  		<option value="MEX">México</option>
+  		  		<option value="MIC">Michoacán</option>
+  		  		<option value="MOR">Morelos</option>
+  		  		<option value="NAY">Nayarit</option>
+  		  		<option value="NLE">Nuevo León</option>
+  		  		<option value="OAX">Oaxaca</option>
+  		  		<option value="PUE">Puebla</option>
+  		  		<option value="QRO">Querétaro</option>
+  		  		<option value="ROO">Quintana Roo</option>
+  		  		<option value="SLP">San Luis Potosí</option>
+  		  		<option value="SIN">Sinaloa</option>
+  		  		<option value="SON">Sonora</option>
+  		  		<option value="TAB">Tabasco</option>
+  			  	<option value="TAM">Tamaulipas</option>
+  			  	<option value="TLX">Tlaxcala</option>
+  		  		<option value="VER">Veracruz</option>
+	  		  	<option value="YUC">Yucatán</option>
+  			  	<option value="ZAC">Zacatecas</option>
+  			</select>	
+  			&nbsp;
+  			&nbsp;
+  			&nbsp;
+	  		<select id='cat'>
+  				<option  selected disabled hidden >Categoría</option>
+      			<option value="">Todas las categorías</option>
+  				<option value="MUSICA">Música</option>
+  				<option value="DEPORTE">Deporte</option>
+	  			<option value="ARTE">Arte</option>
+  				<option value="CINE">Cine</option>
+  				<option value="LITERATURA">Literatura</option>
+  				<option value="TEATRO">Teatro</option>
+  			</select>
+  			&nbsp;
+  			&nbsp;
+  			&nbsp;
+  			&nbsp;
+		    <button type="submit" id="Filtro" onclick="filter();">Aplicar Filtro</button>
+		</div>
+	</div>
+	<br>
 
-        <!--==========================
-          Speakers Section
-        ============================-->
-        <section id="speakers" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header">
-              <h2>Categorías</h2>
-              <p>Explora y encuentra tu evento</p>
-            </div>
+  <div class="i-am-centered">
+    <div id="resultados" class="row">
 
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="speaker">
-                  <img src="img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
-                  <div class="details">
-                    <h3><a href="speaker-details.html">Deporte</a></h3>
-
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="speaker">
-                  <img src="img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
-                  <div class="details">
-                    <h3><a href="speaker-details.html">Música</a></h3>
-
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="speaker">
-                  <img src="img/speakers/3.jpg" alt="Speaker 3" class="img-fluid">
-                  <div class="details">
-                    <h3><a href="speaker-details.html">Arte</a></h3>
-
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="speaker">
-                  <img src="img/speakers/4.jpg" alt="Speaker 4" class="img-fluid">
-                  <div class="details">
-                    <h3><a href="speaker-details.html">Cine</a></h3>
-
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="speaker">
-                  <img src="img/speakers/5.jpg" alt="Speaker 5" class="img-fluid">
-                  <div class="details">
-                    <h3><a href="speaker-details.html">Literatura</a></h3>
-
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="speaker">
-                  <img src="img/speakers/6.jpg" alt="Speaker 6" class="img-fluid">
-                  <div class="details">
-                    <h3 onclick="goto_event()">Teatro</h3>
-
-                    <div class="social">
-                      <a href=""><i class="fa fa-twitter"></i></a>
-                      <a href=""><i class="fa fa-facebook"></i></a>
-                      <a href=""><i class="fa fa-google-plus"></i></a>
-                      <a href=""><i class="fa fa-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        </div>
+      </div>
         </section>
-    <!--==========================
-      Venue Section
-    ============================-->
-    <section id="venue" class="wow fadeInUp">
-
-      <div class="container-fluid">
-
-        <div class="section-header">
-          <h2>Event Venue</h2>
-          <p>Event venue location info and gallery</p>
-        </div>
-
-        <div class="row no-gutters">
-          <div class="col-lg-6 venue-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
-
-          <div class="col-lg-6 venue-info">
-            <div class="row justify-content-center">
-              <div class="col-11 col-lg-8">
-                <h3>Downtown Conference Center, New York</h3>
-                <p>Iste nobis eum sapiente sunt enim dolores labore accusantium autem. Cumque beatae ipsam. Est quae sit qui voluptatem corporis velit. Qui maxime accusamus possimus. Consequatur sequi et ea suscipit enim nesciunt quia velit.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="container-fluid venue-gallery-container">
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/1.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/1.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/2.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/2.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/3.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/3.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/4.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/4.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/5.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/5.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/6.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/6.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/7.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/7.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="venue-gallery">
-              <a href="img/venue-gallery/8.jpg" class="venobox" data-gall="venue-gallery">
-                <img src="img/venue-gallery/8.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-
-
-
-    <!--==========================
-      Sponsors Section
-    ============================-->
-    <section id="sponsors" class="section-with-bg wow fadeInUp">
-
-      <div class="container">
-        <div class="section-header">
-          <h2>Colaboradores</h2>
-        </div>
-
-        <div class="row no-gutters sponsors-wrap clearfix">
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/1.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/2.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/3.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/4.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/5.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/6.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/7.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <div class="sponsor-logo">
-              <img src="img/sponsors/8.png" class="img-fluid" alt="">
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!--==========================
-      Subscribe Section
-    ============================-->
-    <section id="subscribe">
-      <div class="container wow fadeInUp">
-        <div class="section-header">
-          <h2>Newsletter</h2>
-          <p>Rerum numquam illum recusandae quia mollitia consequatur.</p>
-        </div>
-
-        <form method="POST" action="#">
-          <div class="form-row justify-content-center">
-            <div class="col-auto">
-              <input type="text" class="form-control" placeholder="Enter your Email">
-            </div>
-            <div class="col-auto">
-              <button type="submit">Subscribe</button>
-            </div>
-          </div>
-        </form>
-
-      </div>
-    </section>
+  
 
 
     <!--==========================
@@ -580,6 +359,7 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+  <script src="js/discover.js"></script>
 </body>
 
 </html>
