@@ -13,7 +13,7 @@ function llamada(){
 
 
 function filter(){
-  var url = "http://172.20.10.2:5000/api/v1/events/search_events";
+  var url = IP+EVENTS_ENDPOINT;
   jQuery(document).ready(function($) {
     var location = $('#loc').val();
     var categoria = $('#cat').val();
@@ -69,19 +69,19 @@ function filter(){
      var empieza0 ="');\"><img style=\"width: 50%; height: 50%\" src='img/gallery/";
       var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
-      var empieza3 = "</br><b>Fecha: </b>" 
+      var empieza3 = "</br><b>Fecha: </b>"
       var empieza4 = "</p></div></div></div>"
 
   $.ajax(settings).done(function (response) {
       console.log(response);
         $('#resultados').empty();
-        $.each(response.events, function(idx, value){      
-          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+ 
+        $.each(response.events, function(idx, value){
+          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
 
         });
 
-    });  
+    });
 
   });
 }
@@ -90,7 +90,7 @@ function filter(){
 
 
 function search(){
-var url = "http://172.20.10.2:5000/api/v1/events/search_events";
+var url = IP+EVENTS_ENDPOINT
 jQuery(document).ready(function($) {
       var bus = $("#search").val();
     if(bus !== null && bus !== ''){
@@ -110,7 +110,7 @@ jQuery(document).ready(function($) {
         "processData": false,
         "data": JSON.stringify(data_to_send)
     }
-      
+
     }
     else{
       var data_to_send = {
@@ -133,21 +133,20 @@ jQuery(document).ready(function($) {
      var empieza0 ="');\"><img style=\"width: 50%; height: 50%\" src='img/gallery/";
       var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
-      var empieza3 = "</br><b>Fecha: </b>" 
+      var empieza3 = "</br><b>Fecha: </b>"
       var empieza4 = "</p></div></div></div>"
 
   $.ajax(settings).done(function (response) {
       console.log(response);
         $('#resultados').empty();
-        $.each(response.events, function(idx, value){      
+        $.each(response.events, function(idx, value){
         //alert();
-          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + (response['events'][idx]['name']).substring(0, 14)+"..."+empieza2 +response['events'][idx]['event_location']+ 
+          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + (response['events'][idx]['name']).substring(0, 14)+"..."+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
 
         });
 
-    });  
+    });
 
   });
 }
-
