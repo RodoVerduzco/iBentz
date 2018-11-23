@@ -1,12 +1,13 @@
 
 
-//const IP = "http://0.0.0.0:5000";
-// const IP = "http://0.0.0.0:5000"
+//const IP = "http://localhost:5000";
+// const IP = "http://localhost:5000"
 // const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 var url = IP+EVENTS_ENDPOINT;
 
 const urlParams = new URLSearchParams(window.location.search);
-const f_getID = localStorage.getItem('userload');
+const f_getID = getParameterByName('userload');
+const f_username = localStorage.getItem('userload');
 
 function setValuesOnLoad( jQuery ) {
     // Code to run when the document is ready.
@@ -235,3 +236,14 @@ jQuery(document).ready(function($) {
   });
 
 });
+
+
+function getParameterByName(id, url) {
+  if (!url) url = window.location.href;
+  id= id.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + id + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}

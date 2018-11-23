@@ -1,7 +1,7 @@
 
 
-//var url = "http://0.0.0.0:5000/api/v1/users/search_users";
-//var url = "http://0.0.0.0:5000/api/v1/users/search_users";
+//var url = "http://localhost:5000/api/v1/users/search_users";
+//var url = "http://localhost:5000/api/v1/users/search_users";
 
 jQuery(document).ready(function($) {
   "use strict";
@@ -164,7 +164,8 @@ jQuery(document).ready(function($) {
 
         // Here you should stablish your ID session.
         // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
-
+        localStorage.setItem("userload", f_username);
+        localStorage.getItem("logged","true");
 
         // Redirect to User Interface...
         window.location.replace("userinterface.html?userload="+f_username);

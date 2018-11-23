@@ -1,6 +1,6 @@
 
 //var url = "http://localhost:5000/api/v1/users/search_users?type=VALIDATE_USER";
-//var url = "http://0.0.0.0:5000/api/v1/users/search_users";
+//var url = "http://localhost:5000/api/v1/users/search_users";
 
 jQuery(document).ready(function($) {
   "use strict";

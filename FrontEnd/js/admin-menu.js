@@ -1,6 +1,6 @@
-// const IP = "http://0.0.0.0:5000";
+// const IP = "http://localhost:5000";
 // const USERS_ENDPOINT = "/api/v1/users/search_users";
-
+var i;
 function users_table() {
   var settings = {
     "async": true,
@@ -42,6 +42,8 @@ $( "#add-organizer-form" ).submit(function( event ) {
   //// alert( "Handler for .submit() called." );
   event.preventDefault();
   createOrg();
+  i =0;
+  //location.reload();
 });
 
 function createOrg(){
@@ -52,7 +54,7 @@ function createOrg(){
     "birthday":"2000-12-12",
     "email":$("#org_mail").val(),
     "first_name":$("#org_name").val(),
-    "last_name":"",
+    "last_name":".",
     "location":$("#org_loc").val(),
     "username":$("#org_name").val(),
     "password":$("#org_password").val(),
@@ -74,12 +76,13 @@ function createOrg(){
 
   $.ajax(settings).done(function (response) {
     console.log(response);
+    if(i = 1){
     if(response.users == "user inserted successfully"){
       // alert("ORG created successfully");
     }
     else {
-      // alert("ERROR creating user");
-    }
+      console.log("ERROR creating user");
+    }} i =1;
   });
 }
 
