@@ -5,7 +5,7 @@
 var url = IP + USERS_ENDPOINT
 
 const urlParams = new URLSearchParams(window.location.search);
-const f_username = urlParams.get('userload');
+const f_username = localStorage.getItem('userload');
 
 // Passing a named function instead of an anonymous function.
 

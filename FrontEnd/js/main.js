@@ -165,8 +165,7 @@ function generate_carousel(){
   };
 
   $.ajax(settings).done(function (response) {
-    console.log(response);
-    var usr = getParameterByName('userload');
+    var usr = localStorage.getItem('userload');
     var username = usr;
     if(usr == null)
       username = "visit_0123";

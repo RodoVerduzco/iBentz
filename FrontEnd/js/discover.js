@@ -2,10 +2,10 @@ function llamada(){
   //alert("1413");
   var urlstring = window.location.href;
   var url = new URL(urlstring);
-  var usr = url.searchParams.get('userload');
+  var usr = localStorage.getItem("userload");
   //alert(usr);
   var username = usr;
-  if(usr==null)
+  if(!usr || usr == "none")
       username="visit_0123";
   var queryString = "?event_id=" + id + "&user=" + username;
    window.location.href = "../FrontEnd/event.html"+queryString;
@@ -31,7 +31,7 @@ function filter(){
           "type" : "READ",
           "event_location" : location,
           "event_type": categoria
-          }
+        };
     }
     else{
       if(location!==0){
@@ -39,14 +39,14 @@ function filter(){
         var data_to_send = {
           "type" : "READ",
           "event_location" : location
-          }
+        };
       }
       if(categoria!==0){
         //filtrado por categoría
         var data_to_send = {
           "type" : "READ",
           "event_type" : categoria
-          }
+        };
 
       }
     }
@@ -61,7 +61,7 @@ function filter(){
         },
         "processData": false,
         "data": JSON.stringify(data_to_send)
-    }
+    };
 
 
 
@@ -70,12 +70,12 @@ function filter(){
       var empieza1 = "' class=\"img-fluid\" title=\"";
       var title = "\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
-      var empieza3 = "</br><b>Fecha: </b>"
+      var empieza3 = "</br><b>Fecha: </b>";
       var empieza4 = "</p></div></div></div>"
 
   $.ajax(settings).done(function (response) {
       console.log(response);
-        $('#resultados').empty();  
+        $('#resultados').empty();
         $.each(response.events, function(idx, value){
           $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1+"Name: " + response['events'][idx]['name'] + "\nPlace: " + response['events'][idx]['event_location'] + "\nDate: " + response['events'][idx]['event_date']+title+ response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
@@ -91,14 +91,14 @@ function filter(){
 
 
 function search(){
-var url = IP+EVENTS_ENDPOINT
+var url = IP+EVENTS_ENDPOINT;
 jQuery(document).ready(function($) {
       var bus = $("#search").val();
     if(bus !== null && bus !== ''){
        var data_to_send = {
         "type" : "READ",
         "name" : bus
-      }
+      };
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -110,13 +110,13 @@ jQuery(document).ready(function($) {
         },
         "processData": false,
         "data": JSON.stringify(data_to_send)
-    }
+    };
 
     }
     else{
       var data_to_send = {
         "type" : "READ"
-      }
+      };
       var settings = {
         "async": true,
         "crossDomain": true,
@@ -128,15 +128,15 @@ jQuery(document).ready(function($) {
         },
         "processData": false,
         "data": JSON.stringify(data_to_send)
-    }
+    };
   }
      var empieza = "<div class=\"col-lg-3 col-md-6\" align=\"center\"><div class=\"speaker\"><a href='./event.html?event_id=";
      var empieza0 ="'><img style=\"width: 50%; height: 50%\" src='img/gallery/";
       var empieza1 = "' class=\"img-fluid\" title=\"";
       var title = "\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
-      var empieza3 = "</br><b>Fecha: </b>"
-      var empieza4 = "</p></div></div></div>"
+      var empieza3 = "</br><b>Fecha: </b>";
+      var empieza4 = "</p></div></div></div>";
 
   $.ajax(settings).done(function (response) {
       console.log(response);
@@ -145,7 +145,7 @@ jQuery(document).ready(function($) {
         //alert();
           $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 +"Name: " + response['events'][idx]['name'] + "\nPlace: " + response['events'][idx]['event_location'] + "\nDate: " + response['events'][idx]['event_date']+title+ (response['events'][idx]['name']).substring(0, 14)+"..."+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
-          
+
         });
 
     });

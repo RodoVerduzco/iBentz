@@ -6,8 +6,7 @@
 var url = IP+USERS_ENDPOINT;
 var url2 = IP+EVENTS_ENDPOINT;
 
-const urlParams = new URLSearchParams(window.location.search);
-const f_username = urlParams.get('userload');
+const f_username = localStorage.getItem('userload');
 
 $( document ).ready(function() {
     loadActiveUsers();

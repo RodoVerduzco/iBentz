@@ -6,7 +6,7 @@
 var url = IP+EVENTS_ENDPOINT;
 
 const urlParams = new URLSearchParams(window.location.search);
-const f_getID = urlParams.get('userload');
+const f_getID = localStorage.getItem('userload');
 
 function setValuesOnLoad( jQuery ) {
     // Code to run when the document is ready.
