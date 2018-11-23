@@ -103,7 +103,7 @@ jQuery(document).ready(function($) {
         "type" : "VALIDATE",
         "username" : f_username,
         "password" : f_password
-    }
+    };
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -115,39 +115,31 @@ jQuery(document).ready(function($) {
         },
         "processData": false,
         "data": JSON.stringify(data_to_send)
-    }
+    };
 
     $.ajax(settings).done(function (response) {
-      console.log(response);
-      // alert(response);
-     if(response["users"]["user_type"] === "INVALID"){
+     if(response.users.user_type === "INVALID") {
          console.log("No estas registrado");
          // Error Message
          $("#sendmessage").removeClass("show");
          $("#errormessage").addClass("show");
          $('#errormessage').html("Usuario no registrado o password incorrecto.");
           alert(response);
-     }else {
-         console.log("Good");
-         console.log(response["users"]["user_type"]);
-         // Success message
-         // $("#sendmessage").addClass("show");
-         // $("#errormessage").removeClass("show");
-         // $('.contactForm').find("input, textarea").val("");
-         // alert(response);
-         // alert(response["users"]["user_type"]);
-
-         // Here you should stablish your ID session.
-         // Maybe hardcore cookie in js, but that's not correct in terms of formal development.
+     }
+     else {
 
          // Redirect to User Interface...
-         if(response["users"]["user_type"]==="USER"){
+         if(response.users.user_type === "USER") {
              window.location.replace("./userinterface.html?userload="+f_username);
-         }else if(response["users"]["user_type"]==="ORG"){
+             localStorage.setItem("logged", "true");
+         }
+         else if(response.users.user_type === "ORG"){
              console.log("You are a ORG");
-             // alert(response["users"]["user_type"]);
+             localStorage.setItem("logged", "true");
+             localStorage.setItem("organizer", "true");
              window.location.replace("./orginterface.html?userload="+f_username);
-         }else{
+         }
+         else {
               console.log("What are you?");
          }
      }

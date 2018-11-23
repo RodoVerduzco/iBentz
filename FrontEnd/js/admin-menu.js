@@ -1,6 +1,20 @@
 // const IP = "http://0.0.0.0:5000";
 // const USERS_ENDPOINT = "/api/v1/users/search_users";
 
+function check_logged() {
+    if(localStorage.getItem("logged") == "true") {
+        $("#signup-btn").remove();
+        $("#login-btn").remove();
+        if(localStorage.getItem("organizer")) {
+           // do something
+        }
+        else {
+          // agregar opcion de perfil y boton cerrar sesión 
+          //$("#login-btn");
+        }
+    }
+}
+
 function users_table() {
   var settings = {
     "async": true,
@@ -40,4 +54,5 @@ function users_table() {
   });
 }
 
+check_logged();
 users_table();
