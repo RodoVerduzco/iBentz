@@ -1,5 +1,5 @@
 
-const EVENTS_ENDPOINT = "/api/v1/events/search_events";
+//const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 
 jQuery(document).ready(function($) {
   "use strict";

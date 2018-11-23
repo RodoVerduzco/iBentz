@@ -1,7 +1,8 @@
 
 
-const IP = "http://172.20.10.2:5000";
-const EVENTS_ENDPOINT = "/api/v1/events/search_events";
+//const IP = "http://172.20.10.2:5000";
+//const IP = "http://0.0.0.0:5000";
+//const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 var url = IP+EVENTS_ENDPOINT;
 
 const urlParams = new URLSearchParams(window.location.search);
