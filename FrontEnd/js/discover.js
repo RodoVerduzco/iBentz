@@ -1,5 +1,9 @@
-function llamada(id){
-  var usr = getParameterByName('userload');
+function llamada(){
+  //alert("1413");
+  var urlstring = window.location.href;
+  var url = new URL(urlstring);
+  var usr = url.searchParams.get('userload');
+  //alert(usr);
   var username = usr;
   if(usr==null)
       username="visit_0123";
