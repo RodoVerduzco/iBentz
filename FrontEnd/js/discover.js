@@ -1,7 +1,9 @@
 function llamada(id){
- 
-  var user="user";
-  var queryString = "?id=" + id + "&user=" + user;
+  var usr = getParameterByName('userload');
+  var username = usr;
+  if(usr==null)
+      username="visit_0123";
+  var queryString = "?event_id=" + id + "&user=" + username;
    window.location.href = "../FrontEnd/event.html"+queryString;
 }
 
