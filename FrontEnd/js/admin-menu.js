@@ -9,8 +9,7 @@ function users_table() {
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
-      "cache-control": "no-cache",
-      "Postman-Token": "5db49bd8-9a43-4222-ae4f-8096b9ed924d"
+      "cache-control": "no-cache"
     },
     "processData": false,
     "data": "{\n\t\"type\": \"READ_ALL\"\n\n}"
@@ -37,6 +36,50 @@ function users_table() {
       $('#users-table').append(row);
 
     });
+  });
+}
+$( "#add-organizer-form" ).submit(function( event ) {
+  //alert( "Handler for .submit() called." );
+  event.preventDefault();
+  createOrg();
+});
+
+function createOrg(){
+  var data_to_send={
+    "type":"INSERT_USER",
+    "user_type":"ORG",
+    "age":"30",
+    "birthday":"2000-12-12",
+    "email":$("#org_mail").val(),
+    "first_name":$("#org_name").val(),
+    "last_name":"",
+    "location":$("#org_loc").val(),
+    "username":$("#org_name").val(),
+    "password":$("#org_password").val(),
+    "sex":"C"
+  }
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": IP + USERS_ENDPOINT,
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "cache-control": "no-cache",
+      "Postman-Token": "49efbc9e-d034-46d0-a1a6-4f2de1acf5cd"
+    },
+    "processData": false,
+    "data": JSON.stringify(data_to_send)
+  }
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    if(response['users'] == "user inserted successfully"){
+      alert("ORG created successfully");
+    }
+    else {
+      alert("ERROR creating user");
+    }
   });
 }
 
