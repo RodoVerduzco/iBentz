@@ -50,7 +50,7 @@ function event_info(){
           $('#addEvent').hide();
         }
         else if(response['events']['num_registered'] == response['events']['max_participants'] ){
-
+          $('#addEvent').hide();
         }
         check_reg();
 
@@ -83,7 +83,7 @@ function check_reg(){
   $.ajax(settings_check).done(function (response_check) {
     console.log(response_check);
     if(response_check['users'] == "REGISTERED"){
-      $('#addEvent').text("REGISTERED");
+      $('#addEvent').text("UNREGISTER");
     }
   });
 }
@@ -123,7 +123,41 @@ function register_event(){
             //window.location.replace("./event.html?name="+name+"&image="+image+"&date="+date+"&location="+location+"&description="+description+"&info="+info+"&category="+category+"&status="+status+"&num_registered="+num_registered+"\n");
         });
       }
-      else{}
+      else if($("#addEvent").text() == "UNREGISTER"){
+        alert("IN");
+        var data_to_send ={
+          "type":"DEL_EVENT",
+          "username":usern,
+          "event_id": id
+        }
+
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": IP + USERS_ENDPOINT,
+          "method": "POST",
+          "headers": {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache"
+
+          },
+          "processData": false,
+          "data": JSON.stringify(data_to_send)
+        }
+
+      $.ajax(settings).done(function (response) {
+        console.log(">>>>>")
+            console.log(response['users']);
+            if(response['users']== "EVENT_ELIMINATED"){
+              //alert("Event Eliminated");
+              window.location.replace("./userinterface.html?userload="+usern);
+            }
+            else{
+              alert("An error occured, please try again!");
+            }
+            //window.location.replace("./event.html?name="+name+"&image="+image+"&date="+date+"&location="+location+"&description="+description+"&info="+info+"&category="+category+"&status="+status+"&num_registered="+num_registered+"\n");
+        });
+      }
 }
 
 function getParameterByName(id, url) {

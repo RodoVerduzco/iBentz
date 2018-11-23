@@ -162,7 +162,7 @@ function deleteEvent(idEvent){
     });
 }
 
-function createEvent(){
+function createEvet(){
      window.location.href = './orginsevent.html?userload='+f_username+'';
 }
 

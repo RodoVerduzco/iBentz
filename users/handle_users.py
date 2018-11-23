@@ -333,12 +333,15 @@ def delete_event(user, event_id):
     else:
         event_info = db.collection.events.find_one({'_id': ObjectId(event_id)})
         my_events =[]
+        print(event_info['name'])
         for event in user_info['events']:
-            if event_info['name'] == event['name']: pass
-            my_events.append(event)
-        
+            if str(event_info['name']) != str(event['name']): 
+                my_events.append(event)
+        print(my_events)
         db.collection.users.update({"name":user_info['name']},{"$set":{"events":my_events}})
-        return "EVENT ADDED"
+        registered = event_info['num_registered'] -1
+        db.collection.events.update_one({'_id': ObjectId(event_id)}, {"$set":{"num_registered":registered}})
+        return "EVENT_ELIMINATED"
 
 def get_user_recommendations(usr):
 

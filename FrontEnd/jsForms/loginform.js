@@ -147,7 +147,11 @@ jQuery(document).ready(function($) {
              console.log("You are a ORG");
              // alert(response["users"]["user_type"]);
              window.location.replace("./orginterface.html?userload="+f_username);
-         }else{
+         }else if(response["users"]["user_type"]==="ADMIN"){
+          console.log("You are a ORG");
+          // alert(response["users"]["user_type"]);
+          window.location.replace("./admin-menu.html?userload="+f_username);
+       }else{
               console.log("What are you?");
          }
      }

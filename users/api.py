@@ -115,6 +115,15 @@ class UsersAPI(MethodView):
             else:
                 response = USERS.add_event(usr, event_id)
         
+        elif testing_param == "DEL_EVENT":
+            usr = data.get('username')
+            event_id = data.get('event_id')
+
+            if usr is None and event_id is None:
+                response = "MISSING_DATA"
+            else:
+                response = USERS.delete_event(usr, event_id)
+        
         elif testing_param == "MODIFY_USER":
             usr = data.get('username')
             email = data.get('email')
