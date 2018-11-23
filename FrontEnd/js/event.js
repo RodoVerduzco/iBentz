@@ -1,22 +1,23 @@
-const IP2 = "http://172.20.10.2:5000";
-const EVENTS_ENDPOINT2 = "/api/v1/events/search_events";
-var id=getParameterByName('event_id');
-var usern;
-var url_users = "http://localhost:5000/api/v1/users/search_users"
+//const IP2 = "http://172.20.10.2:5000";
+// const IP2 = "http://0.0.0.0:5000";
+// const EVENTS_ENDPOINT2 = "/api/v1/events/search_events";
+ var id=getParameterByName('event_id');
+ var usern;
+// var url_users = "http://localhost:5000/api/v1/users/search_users"
 
 $( document ).ready(event_info()// {
 
 );
 
 function event_info(){
-    
+
   var usr = getParameterByName('usr');
         usern = usr;
-  
+
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": IP2 + EVENTS_ENDPOINT2,
+    "url": IP + EVENTS_ENDPOINT,
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
@@ -27,7 +28,7 @@ function event_info(){
     "data": "{\"type\": \"SEARCH_ID\"\n,\n\t\"event_id\": \""+id+"\"\n}"
   }
 
-  
+
 
  $.ajax(settings).done(function (response) {
       console.log(response);
@@ -52,7 +53,7 @@ function event_info(){
 
         }
         check_reg();
-        
+
       //window.location.replace("./event.html?name="+name+"&image="+image+"&date="+date+"&location="+location+"&description="+description+"&info="+info+"&category="+category+"&status="+status+"&num_registered="+num_registered+"\n");
   });
 }
@@ -67,7 +68,7 @@ function check_reg(){
   var settings_check = {
     "async": true,
     "crossDomain": true,
-    "url": url_users,
+    "url": IP + USERS_ENDPOINT,
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
@@ -77,7 +78,7 @@ function check_reg(){
     "processData": false,
     "data": JSON.stringify(data_check)
   }
-  
+
 
   $.ajax(settings_check).done(function (response_check) {
     console.log(response_check);
@@ -98,7 +99,7 @@ function register_event(){
         var settings = {
           "async": true,
           "crossDomain": true,
-          "url": url_users,
+          "url": IP + USERS_ENDPOINT,
           "method": "POST",
           "headers": {
             "Content-Type": "application/json",

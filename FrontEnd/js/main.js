@@ -1,6 +1,6 @@
-const IP = "http://172.20.10.2:5000";
-//const IP = "http://0.0.0.0:8080";
-const EVENTS_ENDPOINT = "/api/v1/events/search_events";
+//const IP = "http://172.20.10.2:5000";
+//const IP = "http://0.0.0.0:5000";
+//const EVENTS_ENDPOINT = "/api/v1/events/search_events";
 
 jQuery(document).ready(function( $ ) {
     // Back to previous page
@@ -141,7 +141,7 @@ jQuery(document).ready(function( $ ) {
     var ticketType = button.data('ticket-type');
     var modal = $(this);
     modal.find('#ticket-type').val(ticketType);
-  })
+  });
 
 // custom code
 
@@ -165,8 +165,8 @@ function generate_carousel(){
   };
 
   $.ajax(settings).done(function (response) {
-    console.log(response)
-    var usr = getParameterByName('userload')
+    console.log(response);
+    var usr = getParameterByName('userload');
     var username = usr;
     if(usr == null)
       username = "visit_0123";

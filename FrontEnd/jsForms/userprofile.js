@@ -1,6 +1,7 @@
 
-
-var url = "http://172.20.10.2:5000/api/v1/users/search_users";
+//var url = "http://0.0.0.0:5000/api/v1/users/search_users";
+//var url = "http://172.20.10.2:5000/api/v1/users/search_users";
+var url = IP + USERS_ENDPOINT
 
 const urlParams = new URLSearchParams(window.location.search);
 const f_username = urlParams.get('userload');

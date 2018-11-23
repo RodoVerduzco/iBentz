@@ -217,7 +217,29 @@ def get_parameter(user, param):
         return "USER_NOT_FOUND"
     else:
         previous_info = db.collection.users.find_one({"name":user['name']}, {"_id":False})
+        if param == "events_vic":
+            res = []
+            for evry in previous_info['events']:
+                element = db.collection.events.find_one({"name":evry['name']})
+                res.append({
+                    "id" : str(element.get('_id')),
+                    "name": element["name"],
+                    "event_date": element["date"],
+                    "event_type": element["category"],
+                    "event_location": element["location"],
+                    "image":element['image'],
+                    "max_participants": element['max_participants'],
+                    "description": element['description'],
+                    "ext_info": element['ext_info'],
+                    "category": element['category'],
+                    "status": element['status'],
+                    "num_registered": element['num_registered'],
+                    "organizer":element['organizer']
+                })
+            return res
         return previous_info[param]
+
+
 
 def check_events(usr, event_id):
     user = search_username(usr)

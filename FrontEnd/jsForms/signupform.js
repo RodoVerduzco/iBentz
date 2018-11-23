@@ -1,6 +1,7 @@
 
 
-var url = "http://172.20.10.2:5000/api/v1/users/search_users";
+//var url = "http://172.20.10.2:5000/api/v1/users/search_users";
+//var url = "http://0.0.0.0:5000/api/v1/users/search_users";
 
 jQuery(document).ready(function($) {
   "use strict";
@@ -139,7 +140,7 @@ jQuery(document).ready(function($) {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": url,
+        "url": IP + USERS_ENDPOINT,
         "method": "POST",
         "headers": {
             "Content-Type": "application/json",
