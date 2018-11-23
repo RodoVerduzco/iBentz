@@ -65,20 +65,21 @@ function filter(){
 
 
 
-    var empieza = "<div class=\"col-lg-3 col-md-6\" align=\"center\"><div class=\"speaker\"><a href=\"javascript:llamada('";
-     var empieza0 ="');\"><img style=\"width: 50%; height: 50%\" src='img/gallery/";
-      var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
+    var empieza = "<div class=\"col-lg-3 col-md-6\" align=\"center\"><div class=\"speaker\"><a href='./event.html?event_id=";
+     var empieza0 ="';\"><img style=\"width: 50%; height: 50%\" src='img/gallery/";
+      var empieza1 = "' class=\"img-fluid\" title=\"";
+      var title = "\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
       var empieza3 = "</br><b>Fecha: </b>"
       var empieza4 = "</p></div></div></div>"
 
   $.ajax(settings).done(function (response) {
       console.log(response);
-        $('#resultados').empty();
+        $('#resultados').empty();  
         $.each(response.events, function(idx, value){
-          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+
+          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1+"Name: " + response['events'][idx]['name'] + "\nPlace: " + response['events'][idx]['event_location'] + "\nDate: " + response['events'][idx]['event_date']+title+ response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
-
+          alert($("#resultados").html());
         });
 
     });
@@ -129,9 +130,10 @@ jQuery(document).ready(function($) {
         "data": JSON.stringify(data_to_send)
     }
   }
-     var empieza = "<div class=\"col-lg-3 col-md-6\" align=\"center\"><div class=\"speaker\"><a href=\"javascript:llamada('";
-     var empieza0 ="');\"><img style=\"width: 50%; height: 50%\" src='img/gallery/";
-      var empieza1 = "' class=\"img-fluid\"></a><div class=\"details\"><h3>";
+     var empieza = "<div class=\"col-lg-3 col-md-6\" align=\"center\"><div class=\"speaker\"><a href='./event.html?event_id=";
+     var empieza0 ="'><img style=\"width: 50%; height: 50%\" src='img/gallery/";
+      var empieza1 = "' class=\"img-fluid\" title=\"";
+      var title = "\"></a><div class=\"details\"><h3>";
       var empieza2 = "</h3><p><b>Lugar:</b> ";
       var empieza3 = "</br><b>Fecha: </b>"
       var empieza4 = "</p></div></div></div>"
@@ -141,9 +143,9 @@ jQuery(document).ready(function($) {
         $('#resultados').empty();
         $.each(response.events, function(idx, value){
         //alert();
-          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 + (response['events'][idx]['name']).substring(0, 14)+"..."+empieza2 +response['events'][idx]['event_location']+
+          $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 +"Name: " + response['events'][idx]['name'] + "\nPlace: " + response['events'][idx]['event_location'] + "\nDate: " + response['events'][idx]['event_date']+title+ (response['events'][idx]['name']).substring(0, 14)+"..."+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
-
+          
         });
 
     });
