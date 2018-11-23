@@ -196,7 +196,7 @@ function generate_carousel(){
 
 function goto_event(code, user){
 //  var id=id_evento;
-alert(code)
+// alert(code)
 var username = user;
 if(user == "")
   username = "visit_0123"

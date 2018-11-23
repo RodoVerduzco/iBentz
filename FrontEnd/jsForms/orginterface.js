@@ -129,7 +129,7 @@ function loadInactiveUsers(){
 }
 
 function modifyEvent(idEvent){
-    // alert(idEvent);
+    // // alert(idEvent);
      window.location.href = 'orgmodevent.html?userload='+idEvent+'';
 }
 

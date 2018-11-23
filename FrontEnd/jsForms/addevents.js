@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
      $.ajax(settings).done(function (response) {
        console.log(data_to_send);
        console.log(response);
-       alert("Evento Agregado");
+       // alert("Evento Agregado");
      });
 
   });
@@ -89,7 +89,7 @@ jQuery(document).ready(function($) {
      $.ajax(settings).done(function (response) {
        console.log(data_to_send);
        console.log(response);
-       alert("Organizador Agregado");
+       // alert("Organizador Agregado");
      });
 
   });

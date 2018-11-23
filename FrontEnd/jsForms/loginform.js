@@ -119,7 +119,7 @@ jQuery(document).ready(function($) {
 
     $.ajax(settings).done(function (response) {
       console.log(response);
-      // alert(response);
+      // // alert(response);
      if(response.users.user_type === "INVALID"){
          localStorage.setItem("logged", "false");
          console.log("No estas registrado");
@@ -127,7 +127,7 @@ jQuery(document).ready(function($) {
          $("#sendmessage").removeClass("show");
          $("#errormessage").addClass("show");
          $('#errormessage').html("Usuario no registrado o password incorrecto.");
-          // alert(response);
+          // // alert(response);
      }
      else {
          localStorage.setItem("logged", "true");

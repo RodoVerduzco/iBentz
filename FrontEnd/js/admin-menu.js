@@ -39,7 +39,7 @@ function users_table() {
   });
 }
 $( "#add-organizer-form" ).submit(function( event ) {
-  //alert( "Handler for .submit() called." );
+  //// alert( "Handler for .submit() called." );
   event.preventDefault();
   createOrg();
 });
@@ -75,10 +75,10 @@ function createOrg(){
   $.ajax(settings).done(function (response) {
     console.log(response);
     if(response.users == "user inserted successfully"){
-      alert("ORG created successfully");
+      // alert("ORG created successfully");
     }
     else {
-      alert("ERROR creating user");
+      // alert("ERROR creating user");
     }
   });
 }

@@ -114,17 +114,17 @@ function register_event(){
         console.log(">>>>>")
             console.log(response['users']);
             if(response['users']== "EVENT_ADDED"){
-              alert("Event Added");
+              // alert("Event Added");
               window.location.replace("./userinterface.html?userload="+usern);
             }
             else{
-              alert("An error occured, please try again!");
+              // alert("An error occured, please try again!");
             }
             //window.location.replace("./event.html?name="+name+"&image="+image+"&date="+date+"&location="+location+"&description="+description+"&info="+info+"&category="+category+"&status="+status+"&num_registered="+num_registered+"\n");
         });
       }
       else if($("#addEvent").text() == "UNREGISTER"){
-        alert("IN");
+        // alert("IN");
         var data_to_send ={
           "type":"DEL_EVENT",
           "username":usern,
@@ -149,11 +149,11 @@ function register_event(){
         console.log(">>>>>")
             console.log(response['users']);
             if(response['users']== "EVENT_ELIMINATED"){
-              //alert("Event Eliminated");
+              //// alert("Event Eliminated");
               window.location.replace("./userinterface.html?userload="+usern);
             }
             else{
-              alert("An error occured, please try again!");
+              // alert("An error occured, please try again!");
             }
             //window.location.replace("./event.html?name="+name+"&image="+image+"&date="+date+"&location="+location+"&description="+description+"&info="+info+"&category="+category+"&status="+status+"&num_registered="+num_registered+"\n");
         });

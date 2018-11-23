@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
     $.each($("input[name='mypreferences']:checked"), function(){
         mypreferences.push($(this).val());
     });
-    // alert("My favourite sports are: " + mypreferences.join(", "));
+    // // alert("My favourite sports are: " + mypreferences.join(", "));
     console.log(mypreferences.join(", "));
 
     var data_to_send = {
@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
     $.ajax(settings).done(function (response) {
       console.log(data_to_send);
       console.log(response);
-      // alert(response);
+      // // alert(response);
      // if(response["users"] === "user inserted successfully"){
      //     console.log("Good");
      //    // Here you should stablish your ID session.
@@ -92,7 +92,7 @@ jQuery(document).ready(function($) {
      // }else {
      //     // You shouldn't get here...
      //    console.log("You shouldn't get here...");
-     //    // alert("ploxsignup");
+     //    // // alert("ploxsignup");
      //    // Error Message
      //    // $("#sendmessage").removeClass("show");
      //    // $("#errormessage").addClass("show");

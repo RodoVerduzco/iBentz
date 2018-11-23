@@ -1,9 +1,9 @@
 function llamada(){
-  //alert("1413");
+  //// alert("1413");
   var urlstring = window.location.href;
   var url = new URL(urlstring);
   var usr = localStorage.getItem("userload");
-  //alert(usr);
+  //// alert(usr);
   var username = usr;
   if(!usr || usr == "none")
       username="visit_0123";
@@ -24,7 +24,7 @@ function filter(){
     if(categoria===null||categoria==0){
       categoria = 0;
     }
-  //  alert(location); alert(categoria);
+  //  // alert(location); // alert(categoria);
     if(location !==0 && categoria !==0){
       //filtrado por location y categoria
       var data_to_send = {
@@ -79,7 +79,7 @@ function filter(){
         $.each(response.events, function(idx, value){
           $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1+"Name: " + response['events'][idx]['name'] + "\nPlace: " + response['events'][idx]['event_location'] + "\nDate: " + response['events'][idx]['event_date']+title+ response['events'][idx]['name']+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
-          alert($("#resultados").html());
+          // alert($("#resultados").html());
         });
 
     });
@@ -142,7 +142,7 @@ jQuery(document).ready(function($) {
       console.log(response);
         $('#resultados').empty();
         $.each(response.events, function(idx, value){
-        //alert();
+        //// alert();
           $("#resultados").append(empieza+response['events'][idx]['id']+empieza0+response['events'][idx]['image'] +empieza1 +"Name: " + response['events'][idx]['name'] + "\nPlace: " + response['events'][idx]['event_location'] + "\nDate: " + response['events'][idx]['event_date']+title+ (response['events'][idx]['name']).substring(0, 14)+"..."+empieza2 +response['events'][idx]['event_location']+
             empieza3+response['events'][idx]['event_date']+empieza4);
 

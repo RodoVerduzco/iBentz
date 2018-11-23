@@ -158,11 +158,11 @@ jQuery(document).ready(function($) {
     $.ajax(settings).done(function (response) {
       console.log(data_to_send);
       console.log(response);
-      // alert(response);
+      // // alert(response);
      // if(response["users"] === "user inserted successfully"){
      //     console.log("Good");
      //     // Success message
-     //     // // alert("Plox");
+     //     // // // alert("Plox");
      //
      //
      //    // Here you should stablish your ID session.
@@ -173,7 +173,7 @@ jQuery(document).ready(function($) {
      // }else {
      //     // You shouldn't get here...
      //    console.log("No estas registrado");
-     //    alert("ploxsignup");
+     //    // alert("ploxsignup");
      // }
     });
 
